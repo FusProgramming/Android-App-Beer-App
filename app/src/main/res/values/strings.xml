@@ -2,7 +2,7 @@
     <string name="app_name">AndroidDevApp</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_dashboard">Search</string>
     <string name="title_notifications">Login</string>
     <string name="title_profile">Profile</string>
 </resources>

@@ -49,15 +49,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private fun performLogin() {
         val email = emailLogin.text.toString()
         val password = passwordLogin.text.toString()
-
         if(email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please Fill",Toast.LENGTH_SHORT).show()
         }
-
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (!it.isSuccessful) return@addOnCompleteListener
                 Log.d("Login", "Successfully logged in: ${it.result?.user?.uid}")
+                Toast.makeText(this, "Welcome  ", Toast.LENGTH_SHORT).show()
                 val intentLogin = Intent(this, ProfileActivity::class.java)
                 startActivity(intentLogin)
             }
@@ -68,10 +67,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private fun preformRegister() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
-    }
-
-    override fun onStart() {
-        super.onStart()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

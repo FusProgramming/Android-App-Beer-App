@@ -1,21 +1,22 @@
 package com.example.androidappfinalproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_register.*
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        buttonRegisterAccount.setOnClickListener {
-            preformRegister()
-        }
+
+        buttonRegisterAccount.setOnClickListener(this)
     }
 
     private fun preformRegister() {
@@ -36,14 +37,18 @@ class RegisterActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (!it.isSuccessful) {
-                    //saveUserToFirebaseDatabase()
                     return@addOnCompleteListener
                 }
                 saveUserToFirebaseDatabase()
                 Log.d("Register", "Successful Register: ${it.result?.user?.uid}")
+                Toast.makeText(this, "Welcome ${it.result?.user}", Toast.LENGTH_SHORT).show()
+
+                val intentLogin = Intent(this, ProfileActivity::class.java)
+                startActivity(intentLogin)
             }
             .addOnFailureListener {
                 Log.d("Register", "Failed to create User ${it.message}")
+                Toast.makeText(this, "Unsuccessful Login", Toast.LENGTH_SHORT).show()
             }
 
     }
@@ -59,9 +64,13 @@ class RegisterActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Log.d("RegisterActivity", "Failed to set value to database: ${it.message}")
             }
+    }
 
-
-
+    override fun onClick(v: View) {
+        val i = v.id
+        when (i) {
+            R.id.buttonRegisterAccount -> preformRegister()
+        }
     }
 }
 
