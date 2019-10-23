@@ -8,36 +8,30 @@ import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_admin_register.*
 import kotlinx.android.synthetic.main.activity_register.*
 
-class RegisterActivity : AppCompatActivity(), View.OnClickListener {
+class RegisterAdminActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
-        buttonRegisterAccount.setOnClickListener(this)
-        buttonAdminAccount.setOnClickListener(this)
-    }
-
-    private fun adminAccountAccess() {
-        val intentAdmin = Intent(this, RegisterAdminActivity::class.java)
-        startActivity(intentAdmin)
+        setContentView(R.layout.activity_admin_register)
+        buttonRegisterAdminAccount.setOnClickListener(this)
     }
 
     private fun preformRegister() {
-        val name = registerName.text.toString()
-        val password = registerPassword.text.toString()
-        val email = registerEmail.text.toString()
-        val address = registerCity.text.toString()
+        val name = registerAdminName.text.toString()
+        val password = registerAdminPassword.text.toString()
+        val email = registerAdminEmail.text.toString()
 
-        if (email.isEmpty() || password.isEmpty() || name.isEmpty() || address.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty() || name.isEmpty() ) {
             Toast.makeText(this, "Please Enter Information", Toast.LENGTH_SHORT).show()
             return
         }
         Log.d("RegisterActivity", "Name is: " + name)
         Log.d("RegisterActivity", "Password is: $password")
         Log.d("RegisterActivity", "Email is: " + email)
-        Log.d("RegisterActivity", "City is: " + address)
+
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
@@ -48,7 +42,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 Log.d("Register", "Successful Register: ${it.result?.user?.uid}")
                 Toast.makeText(this, "Welcome ${it.result?.user}", Toast.LENGTH_SHORT).show()
 
-                val intentLogin = Intent(this, ProfileActivity::class.java)
+                val intentLogin = Intent(this, ProfileAdminActivity::class.java)
                 startActivity(intentLogin)
             }
             .addOnFailureListener {
@@ -60,9 +54,9 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun saveUserToFirebaseDatabase() {
         val uid = FirebaseAuth.getInstance().uid ?: ""
-        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-        val user = User(uid, registerName.text.toString())
-        ref.setValue(user)
+        val ref = FirebaseDatabase.getInstance().getReference("/userAdmin/$uid")
+        val userAdmin = UserAdmin(uid, registerAdminName.text.toString(), registerAdminEmail.text.toString())
+        ref.setValue(userAdmin)
             .addOnSuccessListener {
                 Log.d("RegisterActivity", "Finally we saved the user to Firebase Database")
             }
@@ -74,11 +68,9 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         val i = v.id
         when (i) {
-            R.id.buttonRegisterAccount -> preformRegister()
-            R.id.buttonAdminAccount -> adminAccountAccess()
+            R.id.buttonRegisterAdminAccount -> preformRegister()
         }
-
     }
 }
 
-class User(val uid: String , val username: String)
+class UserAdmin(val uid: String , val username: String, val email: String)
