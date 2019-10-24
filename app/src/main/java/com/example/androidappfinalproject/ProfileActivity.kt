@@ -13,11 +13,12 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        bottomNavViewBarSignedIn.onNavigationItemSelectedListener= mOnNavigationItemSelectedListener
+
+        bottomNavViewBarSignedIn.onNavigationItemSelectedListener= nOnNavigationItemSelectedListener
 
     }
 
-    private val mOnNavigationItemSelectedListener
+    private val nOnNavigationItemSelectedListener
             = BottomNavigationView.OnNavigationItemSelectedListener { i->
         when(i.itemId){
             R.id.navigation_user_search-> {

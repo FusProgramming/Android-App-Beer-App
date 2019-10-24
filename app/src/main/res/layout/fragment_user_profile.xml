@@ -6,56 +6,9 @@
     android:layout_height="match_parent">
 
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-73dp"
-        tools:layout_editor_absoluteY="36dp">
-
-        <Button
-            android:id="@+id/buttonLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LogOut" />
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="102dp"
-            android:layout_marginBottom="489dp"
-            android:text="RECYCLER VIEW / List of Favorites" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="186dp"
-            android:layout_height="175dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="1dp"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
-        <include layout="@layout/bottom_nav_bar_signedin" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RecyclerView"
-            android:layout_width="408dp"
-            android:layout_height="498dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="6dp"
-            android:layout_marginBottom="37dp" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="237dp"
-            android:layout_marginBottom="632dp"
-            android:text="Profile Activity / Profile Info" />
-
-    </RelativeLayout>
-
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Profile Fragment" />
 </androidx.constraintlayout.widget.ConstraintLayout>

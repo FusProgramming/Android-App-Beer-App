@@ -6,12 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bottom_nav_bar.*
 import com.google.firebase.auth.FirebaseUser
+import fragments.ProfileUserFragment
+import fragments.SearchFragment
 import kotlinx.android.synthetic.main.bottom_nav_bar_admin.*
 import kotlinx.android.synthetic.main.bottom_nav_bar_signedin.*
 
@@ -21,20 +24,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val user = FirebaseAuth.getInstance().currentUser
+
         if (user != null) {
-            setContentView(R.layout.activity_profile)
+            setContentView(R.layout.activity_main)
             Toast.makeText(this, "Welcome ${user?.uid}", Toast.LENGTH_SHORT).show()
-            bottomNavViewBarSignedIn.visibility = View.VISIBLE
-            bottomNavViewBar.visibility = View.GONE
+            val intentLogin = Intent(this, ProfileActivity::class.java)
+            startActivity(intentLogin)
+
         } else {
             setContentView(R.layout.activity_main)
             Toast.makeText(this, "Welcome ${user?.uid}", Toast.LENGTH_SHORT).show()
-            bottomNavViewBar.visibility = View.VISIBLE
-            bottomNavViewBarSignedIn.visibility = View.GONE
         }
         bottomNavViewBar.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
-
     }
+
+
 
 
     private val mOnNavigationItemSelectedListener =
@@ -59,7 +63,6 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
 }
 
 
