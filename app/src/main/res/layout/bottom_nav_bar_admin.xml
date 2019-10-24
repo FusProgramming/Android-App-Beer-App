@@ -1,4 +1,6 @@
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -8,11 +10,10 @@
         android:layout_alignParentBottom="true">
 
         <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-            android:id="@+id/bottomNavViewBar"
+            android:id="@+id/bottomNavViewBarAdmin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/cardview_dark_background"
-            app:menu="@menu/bottom_nav_menu">
+            app:menu="@menu/bottom_nav_menu_admin">
 
         </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
     </androidx.constraintlayout.widget.ConstraintLayout>

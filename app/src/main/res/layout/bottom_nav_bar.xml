@@ -11,7 +11,6 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         android:id="@+id/bottomNavViewBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cardview_dark_background"
         app:menu="@menu/bottom_nav_menu">
 
     </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>

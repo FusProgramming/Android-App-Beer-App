@@ -4,21 +4,32 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import fragments.AddBeerFragment
+import fragments.AddStoreFragment
 import fragments.ProfileFragment
+import kotlinx.android.synthetic.main.bottom_nav_bar_admin.*
 
 class ProfileAdminActivity : AppCompatActivity() {
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item->
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_admin_profile)
+        bottomNavViewBarAdmin.onNavigationItemSelectedListener= mOnNavigationItemSelectedListener
+    }
+
+    private val mOnNavigationItemSelectedListener
+            = BottomNavigationView.OnNavigationItemSelectedListener { item->
         when(item.itemId){
-            R.id.home -> {
+            R.id.admin_profile -> {
                 replaceFragment(ProfileFragment())
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.map -> {
-                replaceFragment(MapFragment())
+            R.id.admin_add_beer -> {
+                replaceFragment(AddBeerFragment())
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.cart -> {
-                replaceFragment(CartFragment())
+            R.id.admin_add_Store -> {
+                replaceFragment(AddStoreFragment())
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -26,12 +37,7 @@ class ProfileAdminActivity : AppCompatActivity() {
         false
 
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_admin_profile)
-        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-    }
     private fun replaceFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)

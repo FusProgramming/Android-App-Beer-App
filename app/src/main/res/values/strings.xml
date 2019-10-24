@@ -5,4 +5,17 @@
     <string name="title_dashboard">Search</string>
     <string name="title_notifications">Login</string>
     <string name="title_profile">Profile</string>
+    <string name="title_add_beer">Add Beer</string>
+    <string name="title_add_store">Add Store</string>
+    <string name="title_admin_profile">Profile</string>
+
+    <string name="title_user_search">Search</string>
+
+    <string name="title_user_profile">Profile</string>
+
+    <string name="title_user_home">Home</string>
+
+
+
+
 </resources>

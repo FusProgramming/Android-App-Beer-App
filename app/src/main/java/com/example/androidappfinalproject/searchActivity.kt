@@ -2,15 +2,19 @@ package com.example.androidappfinalproject
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.bottom_nav_bar.*
+import kotlinx.android.synthetic.main.bottom_nav_bar_signedin.*
 
 class searchActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.search_bar)
+        val user = FirebaseAuth.getInstance().currentUser
+
         bottomNavViewBar.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
     }
 

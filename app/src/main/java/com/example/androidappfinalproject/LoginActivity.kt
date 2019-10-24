@@ -17,6 +17,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.bottom_nav_bar.*
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -33,7 +34,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         auth = FirebaseAuth.getInstance()
-        buttonLogin.setOnClickListener() {
+        buttonLogin.setOnClickListener {
             performLogin()
         }
         buttonRegister.setOnClickListener {
@@ -104,7 +105,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             }
                     Log.d(TAG, "signInWithCredential:success")
                     Toast.makeText(this, "Login Successful" + "${task.result?.user?.displayName}", Toast.LENGTH_SHORT).show()
-
                     val intentLoginGoogle = Intent(this, ProfileActivity::class.java)
                     startActivity(intentLoginGoogle)
                 } else {
