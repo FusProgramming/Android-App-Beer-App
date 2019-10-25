@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_register.*
 import models.User
 
@@ -18,11 +18,6 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_register)
         buttonRegisterAccount.setOnClickListener(this)
         buttonAdminAccount.setOnClickListener(this)
-    }
-
-    private fun adminAccountAccess() {
-        val intentAdmin = Intent(this, RegisterAdminActivity::class.java)
-        startActivity(intentAdmin)
     }
 
     private fun preformRegister() {
@@ -45,7 +40,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 if (!it.isSuccessful) {
                     return@addOnCompleteListener
                 }
-                saveUserToFirebaseDatabase()
+                saveUserToFirebase()
                 Log.d("Register", "Successful Register: ${it.result?.user?.uid}")
                 Toast.makeText(this, "Welcome ${it.result?.user}", Toast.LENGTH_SHORT).show()
 
@@ -59,24 +54,31 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    private fun saveUserToFirebaseDatabase() {
+    private fun saveUserToFirebase() {
         val uid = FirebaseAuth.getInstance().uid ?: ""
-        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-        val user = User(uid, registerName.text.toString())
-        ref.setValue(user)
+        val db = FirebaseFirestore.getInstance()
+        val user = User(
+            uid,
+            registerName.text.toString(),
+            registerEmail.text.toString(),
+            registerPassword.text.toString(),
+            registerCity.text.toString(),
+            "User"
+        )
+        db.collection("users").document(uid).set(user)
             .addOnSuccessListener {
-                Log.d("RegisterActivity", "Finally we saved the user to Firebase Database")
+                Log.d("Regi", "DocumentSnapshot added with ID")
             }
-            .addOnFailureListener {
-                Log.d("RegisterActivity", "Failed to set value to database: ${it.message}")
+            .addOnFailureListener { e ->
+                Log.w("Regi", "Error adding document", e)
             }
+
     }
 
     override fun onClick(v: View) {
         val i = v.id
         when (i) {
             R.id.buttonRegisterAccount -> preformRegister()
-            R.id.buttonAdminAccount -> adminAccountAccess()
         }
 
     }

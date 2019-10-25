@@ -92,18 +92,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                        val personName = acct.displayName
-                        val uid = FirebaseAuth.getInstance().uid ?: ""
-                        val ref = FirebaseDatabase.getInstance()
-                            .getReference("/users/$uid")
-                        val user = User(uid, personName.toString())
-                        ref.setValue(user)
-                            .addOnSuccessListener {
-                                Log.d(TAG, "Finally we saved the user to Firebase Database")
-                            }
-                            .addOnFailureListener {
-                                Log.d(TAG, "Failed to set value to database: ${it.message}")
-                            }
                     Log.d(TAG, "signInWithCredential:success")
                     Toast.makeText(this, "Login Successful" + "${task.result?.user?.displayName}", Toast.LENGTH_SHORT).show()
                     val intentLoginGoogle = Intent(this, ProfileActivity::class.java)
