@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_register.*
+import models.User
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -80,5 +81,3 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 }
-
-class User(val uid: String , val username: String)

@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.bottom_nav_bar.*
+import models.User
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
