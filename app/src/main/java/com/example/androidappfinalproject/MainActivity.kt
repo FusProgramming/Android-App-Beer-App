@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.bottom_nav_bar.*
 import kotlinx.android.synthetic.main.bottom_nav_bar_signedin.*
 
@@ -17,26 +18,26 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val user = FirebaseAuth.getInstance().currentUser
-
-        if (user == null) {
-            setContentView(R.layout.activity_main)
-            Toast.makeText(this, "Welcome ${user?.uid}", Toast.LENGTH_SHORT).show()
-            val intentLogin = Intent(this, ProfileActivity::class.java)
-            startActivity(intentLogin)
-
-
-        } else {
-            setContentView(R.layout.activity_main)
-            bottomNavViewBarSignedIn.visibility = View.GONE
-
-            Toast.makeText(this, "Welcome ${user?.uid}", Toast.LENGTH_SHORT).show()
-        }
+        setContentView(R.layout.activity_main)
+        val uid = FirebaseAuth.getInstance().uid ?: ""
+        val db = FirebaseFirestore.getInstance()
+        val documentRef = db.collection("users").document(uid)
+        documentRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val value = document.getString("type")
+                    if(value == "User") {
+                        val intentLogin = Intent(this, ProfileActivity::class.java)
+                        startActivity(intentLogin)
+                    } else if(value == "Admin") {
+                        val intentLogin = Intent(this, ProfileAdminActivity::class.java)
+                        startActivity(intentLogin)
+                    } else {
+                    }
+                }
+            }
         bottomNavViewBar.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
     }
-
-
-
 
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { i ->

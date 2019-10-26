@@ -15,6 +15,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.bottom_nav_bar.*
@@ -52,20 +53,40 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         val email = emailLogin.text.toString()
         val password = passwordLogin.text.toString()
 
-        if(email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Please Fill",Toast.LENGTH_SHORT).show()
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please Fill", Toast.LENGTH_SHORT).show()
         }
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (!it.isSuccessful) return@addOnCompleteListener
-                Log.d("Login", "Successfully logged in: ${it.result?.user?.uid}")
-                Toast.makeText(this, "Welcome  ", Toast.LENGTH_SHORT).show()
-                val intentLogin = Intent(this, ProfileActivity::class.java)
-                startActivity(intentLogin)
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "Failed to log in: ${it.message}", Toast.LENGTH_SHORT).show()
+                val db = FirebaseFirestore.getInstance()
+                val uid = FirebaseAuth.getInstance().uid ?: ""
+                val documentRef = db.collection("users").document(uid)
+                documentRef.get()
+                    .addOnSuccessListener { document ->
+                        if (document != null) {
+                            val value = document.getString("type")
+                            Log.d("Login", "Successfully logged in: ${document.data}")
+                            if (value == "User") {
+                                Log.d("Login", "Successfully logged in: $value")
+                                Log.d("Login", "Successfully logged in: ${it.result?.user?.uid}")
+                                Toast.makeText(this, "Welcome  ", Toast.LENGTH_SHORT).show()
+                                val intentLogin = Intent(this, ProfileActivity::class.java)
+                                startActivity(intentLogin)
+                            } else if(value == "Admin") {
+                                Log.d("Login", "Successfully logged in: $value")
+                                Log.d("Login", "Successfully logged in: ${it.result?.user?.uid}")
+                                Toast.makeText(this, "Welcome  ", Toast.LENGTH_SHORT).show()
+                                val intentLoginAdmin = Intent(this, ProfileAdminActivity::class.java)
+                                startActivity(intentLoginAdmin)
+                            }
+                        }
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Failed to log in: ${it.message}", Toast.LENGTH_SHORT)
+                            .show()
+                    }
             }
     }
     private fun preformRegister() {
@@ -93,7 +114,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
-                    Toast.makeText(this, "Login Successful" + "${task.result?.user?.displayName}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Login Successful" + "${task.result?.user?.displayName}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     val intentLoginGoogle = Intent(this, ProfileActivity::class.java)
                     startActivity(intentLoginGoogle)
                 } else {
