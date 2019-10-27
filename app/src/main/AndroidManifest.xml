@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ProfileAdminActivity"></activity>
-        <activity android:name=".RegisterAdminActivity" />
+        <activity android:name=".AddStoreActivity" />
+        <activity android:name=".AddBeerActivity" >
+
+        </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".searchActivity" />
