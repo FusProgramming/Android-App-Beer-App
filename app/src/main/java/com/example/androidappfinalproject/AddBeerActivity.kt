@@ -74,21 +74,21 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
         val beerName = addBeerName.text.toString()
         val typeBeer = addBeerType.text.toString()
         Log.d("FireBase", "DocumentSnapshot added with ID")
-        saveUserToFirebase(beerName,typeBeer)
+        saveUserToFirebase(id.toString(), beerName,typeBeer)
         Log.d("FireBase", "DocumentSnapshot added with ID")
 
     }
 
 
 
-    private fun saveUserToFirebase(beerName: String, beerType: String) {
-        val beer = Beers(beerName,beerType).toMap()
+    private fun saveUserToFirebase(id: String, beerName: String, beerType: String) {
+        val beer = Beers(id,beerName,beerType).toMap()
         Log.d("FireBase", "DocumentSnapshot added with ID")
         db!!.collection("beers")
             .add(beer)
             .addOnSuccessListener { documentReference ->
                 Log.d("FireBase", "DocumentSnapshot written with ID: " + documentReference.id)
-                Log.d("FireBase", "DocumentSnapshot added with ID")
+                Log.d("FireBase", "DocumentSnapshot added with ID: ${id}")
             }.addOnFailureListener {
                 Log.d("FireBase", "DocumentSnapshot Failed with ID")
             }

@@ -46,17 +46,5 @@ class AddBeerRecyclerViewAdapter(private val beerList: MutableList<Beers>,
         internal var beerName: TextView = view.findViewById(R.id.beer_name_textview)
         internal var beerType: TextView = view.findViewById(R.id.beer_type_textview)
     }
-/*
-    private fun updateBeer(beer: Beers) {
-        val intent = Intent(context, ProfileAdminActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        intent.putExtra("Update Beer ID", beer.id)
-        intent.putExtra("Update Beer Name", beer.beerName)
-        intent.putExtra("Update Beer Type", beer.beerType)
-        context.startActivity(intent)
-
-
-    }
-
- */
+    
 }

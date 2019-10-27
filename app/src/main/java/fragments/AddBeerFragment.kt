@@ -40,7 +40,7 @@ class AddBeerFragment : Fragment() {
                 val beerList = mutableListOf<Beers>()
                 for (doc in documentSnapshots!!) {
                     val beer = doc.toObject(Beers::class.java)
-                    beer.id = doc.id
+                    beer.uid = doc.id
                     beerList.add(beer)
                 }
                 beerAdapter = AddBeerRecyclerViewAdapter(beerList, context!!, db!!)
@@ -57,7 +57,7 @@ class AddBeerFragment : Fragment() {
                 val beerList = mutableListOf<Beers>()
                 for (doc in task.result!!) {
                     val beer = doc.toObject<Beers>(Beers::class.java)
-                    beer.id = doc.id
+                    beer.uid = doc.id
                     beerList.add(beer)
                 }
 
