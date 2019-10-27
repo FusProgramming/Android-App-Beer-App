@@ -4,36 +4,95 @@ package com.example.androidappfinalproject
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.androidappfinalproject.AddStoreActivity
 import com.example.androidappfinalproject.ProfileAdminActivity
 import com.example.androidappfinalproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import fragments.AddBeerFragment
 import fragments.ProfileFragment
+import kotlinx.android.synthetic.main.activity_admin_add_beer.*
 import kotlinx.android.synthetic.main.bottom_nav_bar_admin.*
+import models.Beers
 
-class AddBeerActivity : AppCompatActivity() {
+class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
+
+    private var db: FirebaseFirestore? = null
+    internal var id: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_add_beer)
+
+        db = FirebaseFirestore.getInstance()
+        buttonAddBeer.setOnClickListener(this)
         bottomNavViewBarAdmin.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        addBeerName.visibility = View.VISIBLE
+        addBeerType.visibility = View.VISIBLE
+        buttonAddBeer.visibility = View.VISIBLE
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.beer_nav_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.BeerProfileButton -> {
+                addBeerName.visibility = View.GONE
+                addBeerType.visibility = View.GONE
+                buttonAddBeer.visibility = View.GONE
                 replaceFragment(AddBeerFragment())
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onClick(v: View) {
+        val i = v.id
+        when (i) {
+            R.id.buttonAddBeer -> addBeer()
+        }
+
+    }
+
+
+    private fun addBeer() {
+        val beerName = addBeerName.text.toString()
+        val typeBeer = addBeerType.text.toString()
+        Log.d("FireBase", "DocumentSnapshot added with ID")
+        saveUserToFirebase(beerName,typeBeer)
+        Log.d("FireBase", "DocumentSnapshot added with ID")
+
+    }
+
+
+
+    private fun saveUserToFirebase(beerName: String, beerType: String) {
+        val beer = Beers(beerName,beerType).toMap()
+        Log.d("FireBase", "DocumentSnapshot added with ID")
+        db!!.collection("beers")
+            .add(beer)
+            .addOnSuccessListener { documentReference ->
+                Log.d("FireBase", "DocumentSnapshot written with ID: " + documentReference.id)
+                Log.d("FireBase", "DocumentSnapshot added with ID")
+            }.addOnFailureListener {
+                Log.d("FireBase", "DocumentSnapshot Failed with ID")
+            }
+
     }
     private fun replaceFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()

@@ -22,8 +22,11 @@ class ProfileActivity : AppCompatActivity() {
             = BottomNavigationView.OnNavigationItemSelectedListener { i->
         when(i.itemId){
             R.id.navigation_user_search-> {
+                /*
                 replaceFragment(SearchFragment())
                 return@OnNavigationItemSelectedListener true
+
+                 */
             }
             R.id.navigation_user_profile -> {
                 replaceFragment(ProfileUserFragment())
