@@ -55,6 +55,7 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
                 addBeerName.visibility = View.GONE
                 addBeerType.visibility = View.GONE
                 buttonAddBeer.visibility = View.GONE
+                addBeerCompany.visibility = View.GONE
                 replaceFragment(AddBeerFragment())
             }
         }
@@ -71,18 +72,19 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun addBeer() {
+        val beerCompany = addBeerCompany.text.toString()
         val beerName = addBeerName.text.toString()
         val typeBeer = addBeerType.text.toString()
         Log.d("FireBase", "DocumentSnapshot added with ID")
-        saveUserToFirebase(id.toString(), beerName,typeBeer)
+        saveUserToFirebase(id.toString(),beerCompany, beerName,typeBeer)
         Log.d("FireBase", "DocumentSnapshot added with ID")
 
     }
 
 
 
-    private fun saveUserToFirebase(id: String, beerName: String, beerType: String) {
-        val beer = Beers(id,beerName,beerType).toMap()
+    private fun saveUserToFirebase(id: String,beerCompany: String, beerName: String, beerType: String) {
+        val beer = Beers(id,beerCompany,beerName,beerType).toMap()
         Log.d("FireBase", "DocumentSnapshot added with ID")
         db!!.collection("beers")
             .add(beer)

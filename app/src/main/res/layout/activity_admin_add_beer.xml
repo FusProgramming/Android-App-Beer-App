@@ -8,20 +8,31 @@
         android:id="@+id/fragmentContainer"
         tools:context=".ProfileAdminActivity">
 
-
         <EditText
-            android:id="@+id/addBeerType"
+            android:id="@+id/addBeerCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="172dp"
+            android:layout_marginTop="56dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="type"
+            android:text="Company"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+    <EditText
+    android:id="@+id/addBeerType"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="164dp"
+    android:ems="10"
+    android:inputType="textPersonName"
+    android:text="type"
+    app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
             android:id="@+id/buttonAddBeer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,23 +43,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/addBeerName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="112dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="BeerName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/addBeerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="108dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="BeerName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
+    <RelativeLayout
             android:id="@+id/relativeLayoutAdmin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

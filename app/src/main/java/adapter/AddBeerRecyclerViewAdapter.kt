@@ -46,5 +46,5 @@ class AddBeerRecyclerViewAdapter(private val beerList: MutableList<Beers>,
         internal var beerName: TextView = view.findViewById(R.id.beer_name_textview)
         internal var beerType: TextView = view.findViewById(R.id.beer_type_textview)
     }
-    
+
 }
