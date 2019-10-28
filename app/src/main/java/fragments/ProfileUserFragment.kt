@@ -13,4 +13,6 @@ class ProfileUserFragment: Fragment() {
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_user_profile, container, false)
     }
+
+
 }

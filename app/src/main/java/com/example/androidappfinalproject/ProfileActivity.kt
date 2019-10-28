@@ -1,6 +1,9 @@
 package com.example.androidappfinalproject
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,6 +20,7 @@ class ProfileActivity : AppCompatActivity() {
         bottomNavViewBarSignedIn.onNavigationItemSelectedListener= nOnNavigationItemSelectedListener
 
     }
+
 
     private val nOnNavigationItemSelectedListener
             = BottomNavigationView.OnNavigationItemSelectedListener { i->

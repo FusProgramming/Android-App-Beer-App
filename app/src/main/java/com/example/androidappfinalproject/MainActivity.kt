@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -19,11 +20,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION)
+        ActivityCompat.requestPermissions(this, permissions,0)
+
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val db = FirebaseFirestore.getInstance()
+/*
         val documentRef = db.collection("users").document(uid)
         documentRef.get()
             .addOnSuccessListener { document ->
+
                 if (document != null) {
                     val value = document.getString("type")
                     if(value == "User") {
@@ -33,9 +40,12 @@ class MainActivity : AppCompatActivity() {
                         val intentLogin = Intent(this, ProfileAdminActivity::class.java)
                         startActivity(intentLogin)
                     } else {
+
                     }
                 }
             }
+
+ */
         bottomNavViewBar.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
     }
 
