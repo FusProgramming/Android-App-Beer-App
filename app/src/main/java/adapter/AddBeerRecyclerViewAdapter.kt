@@ -34,7 +34,6 @@ class AddBeerRecyclerViewAdapter(private val beerList: MutableList<Beers>,
         val view = LayoutInflater.from(parent!!.context)
             .inflate(R.layout.item_beer, parent, false)
         return ViewHolder(view)
-
     }
 
     override fun getItemCount(): Int {
