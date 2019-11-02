@@ -15,7 +15,6 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import models.AddSearchRecyclerViewAdapter
-import models.Beers
 import models.Stores
 
 class SearchBeerFragment : Fragment() {
@@ -31,7 +30,7 @@ class SearchBeerFragment : Fragment() {
         db = FirebaseFirestore.getInstance()
         root = inflater.inflate(R.layout.fragment_store, container, false)
 
-        loadBeerList()
+        loadStoreList()
 
         firestoreListener = db!!.collection("stores")
             .addSnapshotListener(EventListener { documentSnapshots, e ->
@@ -46,14 +45,14 @@ class SearchBeerFragment : Fragment() {
                     storeList.add(store)
                 }
                 storeAdapter = AddSearchRecyclerViewAdapter(storeList, context!!, db!!)
-                val beerListRV = root!!
+                val storeListRV = root!!
                     .findViewById<View>(R.id.store_list) as RecyclerView
-                beerListRV.adapter = storeAdapter
+                storeListRV.adapter = storeAdapter
             })
         return root
     }
 
-    private fun loadBeerList() {
+    private fun loadStoreList() {
         db!!.collection("stores").get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val storeList = mutableListOf<Stores>()
