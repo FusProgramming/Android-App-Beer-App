@@ -31,7 +31,7 @@
             android:padding="5dp"
             android:text="Beer Name" />
         <TextView
-            android:id="@+id/store_distance_type_textview"
+            android:id="@+id/store_address_type_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
