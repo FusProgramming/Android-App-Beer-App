@@ -59,7 +59,6 @@ class AddSearchRecyclerViewAdapter(private val storeList: MutableList<Stores>,
 
     private fun getData() {
         val intent = Intent(context, MapActivity::class.java)
-
         context.startActivity(intent)
     }
 

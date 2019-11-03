@@ -2,10 +2,13 @@ package com.example.androidappfinalproject
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
+import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -17,6 +20,11 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.item_store.*
+import models.Beers
+import models.Stores
+import java.io.IOException
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -25,6 +33,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private val FASTEST_INTERVAL: Long = 2000 /* 2 sec */
     internal lateinit var mLastLocation: Location
     internal lateinit var mLocationResult: LocationRequest
+    private var db: FirebaseFirestore? = null
 
     private var latitude = 0.0
     private var longitude = 0.0
@@ -43,7 +52,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onStart() {
         super.onStart()
         startLocationUpdates()
+
     }
+
 
     override fun onMapReady(googleMap: GoogleMap) {
 
@@ -66,6 +77,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         )
 
     }
+    
 
     protected fun startLocationUpdates() {
         // initialize location request object
