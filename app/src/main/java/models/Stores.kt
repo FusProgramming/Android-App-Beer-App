@@ -1,5 +1,6 @@
 package models
 
+import com.google.firebase.firestore.GeoPoint
 import java.util.HashMap
 
 class Stores {
@@ -7,6 +8,7 @@ class Stores {
     var storeName: String? = null
     var storeAddress: String? = null
     var beerName: String? = null
+    var geoPoint: GeoPoint? = null
 
 
     constructor() {}
@@ -15,12 +17,14 @@ class Stores {
         id: String,
         storeName: String,
         storeAddress: String,
-        beerName: String
+        beerName: String,
+        geoPoint: GeoPoint
     ) {
         this.uid = id
         this.storeName = storeName
         this.storeAddress = storeAddress
         this.beerName = beerName
+        this.geoPoint = geoPoint
 
     }
 
@@ -30,6 +34,7 @@ class Stores {
         result.put("storeName",storeName!!)
         result.put("storeAddress", storeAddress!!)
         result.put("beerName", beerName!!)
+        result.put("geoPoint", geoPoint!!)
 
         return result
     }

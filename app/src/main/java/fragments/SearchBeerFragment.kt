@@ -49,6 +49,7 @@ class SearchBeerFragment : Fragment() {
                     .findViewById<View>(R.id.store_list) as RecyclerView
                 storeListRV.adapter = storeAdapter
             })
+
         return root
     }
 
