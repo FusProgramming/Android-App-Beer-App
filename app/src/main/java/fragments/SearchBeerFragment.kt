@@ -3,6 +3,7 @@ package fragments
 
 import adapter.AddBeerRecyclerViewAdapter
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,14 +30,16 @@ class SearchBeerFragment : Fragment() {
     ): View? {
         db = FirebaseFirestore.getInstance()
         root = inflater.inflate(R.layout.fragment_store, container, false)
-
+        Log.d("Regi", "SearchBeerFragment")
         loadStoreList()
+        Log.d("Regi", "SearchBeerFragmentLoaded")
 
         firestoreListener = db!!.collection("stores")
             .addSnapshotListener(EventListener { documentSnapshots, e ->
                 if (e != null) {
                     return@EventListener
                 }
+                Log.d("Regi", "SearchBeerFragment")
 
                 val storeList = mutableListOf<Stores>()
                 for (doc in documentSnapshots!!) {
@@ -49,6 +52,7 @@ class SearchBeerFragment : Fragment() {
                     .findViewById<View>(R.id.store_list) as RecyclerView
                 storeListRV.adapter = storeAdapter
             })
+        Log.d("Regi", "SearchBeerFragment?")
 
         return root
     }

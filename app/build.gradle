@@ -43,6 +43,13 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation "com.google.android.gms:play-services-maps:17.0.0"
     implementation 'com.google.android.gms:play-services-places:17.0.0'
+    implementation 'androidx.fragment:fragment-ktx:1.1.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'com.google.android.gms:play-services-maps:11.8.0'
+    implementation 'com.google.android.gms:play-services-location:11.8.0'
+    testImplementation 'junit:junit:4.12'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

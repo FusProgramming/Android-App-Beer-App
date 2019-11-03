@@ -30,6 +30,7 @@ class searchActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         setContentView(R.layout.activity_search)
         replaceFragment(SearchBeerFragment())
+
         bottomNavViewBar.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
     }
 
@@ -40,7 +41,6 @@ class searchActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query:String):Boolean {
                 Log.d("Regi", "DocumentSnapshot added with ID")
-
                 return false
             }
             override fun onQueryTextChange(newText:String):Boolean {
@@ -55,8 +55,8 @@ class searchActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             R.id.BeerProfileButton -> {
                 replaceFragment(SearchBeerFragment())
             }

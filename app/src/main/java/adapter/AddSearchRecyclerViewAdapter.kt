@@ -1,12 +1,17 @@
 package models
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidappfinalproject.LoginActivity
+import com.example.androidappfinalproject.MapActivity
 import com.example.androidappfinalproject.R
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -25,7 +30,7 @@ class AddSearchRecyclerViewAdapter(private val storeList: MutableList<Stores>,
         holder.geoPoint.text = store.geoPoint.toString()
 
         holder.itemView.setOnClickListener {
-            
+            getData()
         }
 
 
@@ -50,6 +55,12 @@ class AddSearchRecyclerViewAdapter(private val storeList: MutableList<Stores>,
         internal var beerName: TextView = view.findViewById((R.id.store_beer_name_textview))
         internal var geoPoint: TextView = view.findViewById((R.id.store_geopoint_textview))
 
+    }
+
+    private fun getData() {
+        val intent = Intent(context, MapActivity::class.java)
+
+        context.startActivity(intent)
     }
 
 }

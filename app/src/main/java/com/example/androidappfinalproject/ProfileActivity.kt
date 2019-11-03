@@ -25,15 +25,13 @@ class ProfileActivity : AppCompatActivity() {
     private val nOnNavigationItemSelectedListener
             = BottomNavigationView.OnNavigationItemSelectedListener { i->
         when(i.itemId){
-            R.id.navigation_user_search-> {
-                /*
-                replaceFragment(SearchFragment())
+            R.id.navigation_dashboard -> {
+                val intent2 = Intent(this, searchActivity::class.java)
+                startActivity(intent2)
                 return@OnNavigationItemSelectedListener true
-
-                 */
             }
             R.id.navigation_user_profile -> {
-                replaceFragment(ProfileUserFragment())
+                //replaceFragment(ProfileUserFragment())
                 return@OnNavigationItemSelectedListener true
             }
 
