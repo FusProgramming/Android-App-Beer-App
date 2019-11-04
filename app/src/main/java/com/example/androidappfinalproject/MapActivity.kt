@@ -60,8 +60,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mGoogleMap = googleMap
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
                 mGoogleMap.isMyLocationEnabled = true
             }
         } else {
@@ -77,7 +80,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         )
 
     }
-    
+
 
     protected fun startLocationUpdates() {
         // initialize location request object
@@ -117,11 +120,12 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         var msg = "Updated Location: " + location.latitude + " , " + location.longitude
 
         // show toast message with updated location
-        Toast.makeText(this,msg, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
         val location = LatLng(location.latitude, location.longitude)
         mGoogleMap.clear()
         mGoogleMap.addMarker(MarkerOptions().position(location).title("Current Location"))
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(location))
+        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(11f))
     }
 
     private fun checkPermission(): Boolean {
@@ -157,6 +161,4 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
-
-
 }

@@ -8,6 +8,7 @@ class Stores {
     var storeName: String? = null
     var storeAddress: String? = null
     var beerName: String? = null
+    var geoPoint: GeoPoint? = null
     var addressLongitude: String? = null
     var addressLatitude: String? = null
 
@@ -19,6 +20,7 @@ class Stores {
         storeName: String,
         storeAddress: String,
         beerName: String,
+        geoPoint: GeoPoint,
         longitude: String,
         latitude: String
     ) {
@@ -26,6 +28,7 @@ class Stores {
         this.storeName = storeName
         this.storeAddress = storeAddress
         this.beerName = beerName
+        this.geoPoint = geoPoint
         this.addressLongitude = longitude
         this.addressLatitude = latitude
 
@@ -36,6 +39,7 @@ class Stores {
         result.put("storeName",storeName!!)
         result.put("storeAddress", storeAddress!!)
         result.put("beerName", beerName!!)
+        result.put("geoPoint", geoPoint!!)
         result.put("storeAddressLat", addressLatitude!!)
         result.put("storeAddressLong", addressLongitude!!)
         return result
