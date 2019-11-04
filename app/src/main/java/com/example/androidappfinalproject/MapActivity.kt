@@ -1,6 +1,7 @@
 package com.example.androidappfinalproject
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
@@ -25,6 +26,15 @@ import kotlinx.android.synthetic.main.item_store.*
 import models.Beers
 import models.Stores
 import java.io.IOException
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.location.Address
+import android.net.Uri
+import android.util.Log
+import com.google.firebase.firestore.GeoPoint
+import kotlinx.android.synthetic.main.activity_map_data.*
+
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -43,6 +53,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_map)
+        val searchAddress = intent.getStringExtra("address")
+
+        Log.d("Register", "Successful Register: $searchAddress")
 
         val mapFragment =
             supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
@@ -52,7 +65,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onStart() {
         super.onStart()
         startLocationUpdates()
-
     }
 
 
@@ -79,6 +91,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             ).title("Current Location")
         )
 
+        Log.d("Register", "Successful Register: $storeAddress")
+        val searchAddress = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=$storeAddress"))
+        startActivity(searchAddress)
     }
 
 
@@ -123,6 +138,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
         val location = LatLng(location.latitude, location.longitude)
         mGoogleMap.clear()
+
         mGoogleMap.addMarker(MarkerOptions().position(location).title("Current Location"))
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(location))
         mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(11f))
@@ -131,7 +147,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun checkPermission(): Boolean {
         if (ContextCompat.checkSelfPermission(
                 this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
+                Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             return true;
@@ -161,4 +177,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
+
+
 }

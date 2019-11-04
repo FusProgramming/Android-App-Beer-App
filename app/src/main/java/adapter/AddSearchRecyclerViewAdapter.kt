@@ -2,6 +2,7 @@ package models
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.androidappfinalproject.LoginActivity
 import com.example.androidappfinalproject.MapActivity
 import com.example.androidappfinalproject.R
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_map_data.*
 
 class AddSearchRecyclerViewAdapter(private val storeList: MutableList<Stores>,
                                    private val context: Context,
@@ -30,9 +36,12 @@ class AddSearchRecyclerViewAdapter(private val storeList: MutableList<Stores>,
         holder.geoPoint.text = store.geoPoint.toString()
 
         holder.itemView.setOnClickListener {
-            getData()
-        }
+            val intent = Intent(context, MapActivity::class.java)
+            intent.putExtra("store", holder.storeAddress.text.toString())
+            context.startActivity(intent)
 
+
+        }
 
     }
 
@@ -56,10 +65,5 @@ class AddSearchRecyclerViewAdapter(private val storeList: MutableList<Stores>,
         internal var geoPoint: TextView = view.findViewById((R.id.store_geopoint_textview))
 
     }
-
-    private fun getData() {
-        val intent = Intent(context, MapActivity::class.java)
-        context.startActivity(intent)
-    }
-
 }
+
