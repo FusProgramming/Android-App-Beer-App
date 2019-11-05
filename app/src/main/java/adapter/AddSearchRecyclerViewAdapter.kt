@@ -19,9 +19,8 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_map_data.*
 
-class AddSearchRecyclerViewAdapter(private val storeList: MutableList<Stores>,
+class  AddSearchRecyclerViewAdapter(private val storeList: MutableList<Stores>,
                                    private val context: Context,
                                    private val db: FirebaseFirestore
 ) :
@@ -37,7 +36,7 @@ class AddSearchRecyclerViewAdapter(private val storeList: MutableList<Stores>,
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, MapActivity::class.java)
-            intent.putExtra("store", holder.storeAddress.text.toString())
+            intent.putExtra("storeAddress", holder.storeAddress.text.toString())
             context.startActivity(intent)
 
 

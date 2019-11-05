@@ -33,7 +33,6 @@ import android.location.Address
 import android.net.Uri
 import android.util.Log
 import com.google.firebase.firestore.GeoPoint
-import kotlinx.android.synthetic.main.activity_map_data.*
 
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -53,9 +52,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_map)
-        val searchAddress = intent.getStringExtra("address")
-
-        Log.d("Register", "Successful Register: $searchAddress")
+        val searchAddress = intent.getStringExtra("storeAddress")
+        Toast.makeText(this, "Unsuccessful Login $searchAddress", Toast.LENGTH_SHORT).show()
+        val searchAddress1 = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=$searchAddress"))
+        startActivity(searchAddress1)
 
         val mapFragment =
             supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
@@ -90,10 +90,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 )
             ).title("Current Location")
         )
-
-        Log.d("Register", "Successful Register: $storeAddress")
-        val searchAddress = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=$storeAddress"))
-        startActivity(searchAddress)
     }
 
 
