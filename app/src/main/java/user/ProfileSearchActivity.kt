@@ -1,34 +1,29 @@
-package com.example.androidappfinalproject
+package user
 
-import adapter.AddBeerRecyclerViewAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import com.example.androidappfinalproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
-import fragments.SearchBeerFragment
-import kotlinx.android.synthetic.main.bottom_nav_bar.*
-import models.Beers
+import fragments.UserSearchBeerFragment
+import kotlinx.android.synthetic.main.bottom_nav_bar_signedin.*
 
 
-class searchActivity : AppCompatActivity() {
-
+class ProfileSearchActivity : AppCompatActivity() {
     private var db: FirebaseFirestore? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = FirebaseFirestore.getInstance()
-        setContentView(R.layout.activity_search)
-        replaceFragment(SearchBeerFragment())
+        setContentView(R.layout.activity_user_search)
+        replaceFragment(UserSearchBeerFragment())
 
-        bottomNavViewBar.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
+        bottomNavViewBarSignedIn.onNavigationItemSelectedListener = nOnNavigationItemSelectedListener
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -52,15 +47,6 @@ class searchActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.BeerProfileButton -> {
-                replaceFragment(SearchBeerFragment())
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     private fun searchData() {
         db!!.collection("beers").whereEqualTo("beerName", true)
             .get()
@@ -73,40 +59,29 @@ class searchActivity : AppCompatActivity() {
                 Log.w("beer", "Error getting documents: ", exception)
             }
     }
+
+    private val nOnNavigationItemSelectedListener
+            = BottomNavigationView.OnNavigationItemSelectedListener { i->
+        when(i.itemId){
+            R.id.navigation_user_search -> {
+                val intent2 = Intent(this, ProfileSearchActivity::class.java)
+                startActivity(intent2)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_user_profile -> {
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+
+        }
+
+        false
+
+    }
     private fun replaceFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
     }
-    private val mOnNavigationItemSelectedListener =
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_notifications -> {
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.navigation_dashboard -> {
-                    val intent2 = Intent(this, searchActivity::class.java)
-                    startActivity(intent2)
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.navigation_home -> {
-                    val intent3 = Intent(this, MainActivity::class.java)
-                    startActivity(intent3)
-                    return@OnNavigationItemSelectedListener true
-                }
-                else -> false
-            }
-        }
-
-
-
-
 }
-
-
-
-
-
-

@@ -1,8 +1,9 @@
-package com.example.androidappfinalproject
+package admin
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.androidappfinalproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.bottom_nav_bar_admin.*
 
@@ -26,7 +27,7 @@ class AddStoreActivity : AppCompatActivity() {
                     startActivity(intent2)
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.admin_add_Store-> {
+                R.id.admin_add_Store -> {
                     val intent3 = Intent(this, AddStoreActivity::class.java)
                     startActivity(intent3)
                     return@OnNavigationItemSelectedListener true

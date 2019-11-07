@@ -1,4 +1,4 @@
-package com.example.androidappfinalproject
+package admin
 
 
 import android.content.Intent
@@ -8,16 +8,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import com.example.androidappfinalproject.AddStoreActivity
-import com.example.androidappfinalproject.ProfileAdminActivity
 import com.example.androidappfinalproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import fragments.AddBeerFragment
-import fragments.ProfileFragment
 import kotlinx.android.synthetic.main.activity_admin_add_beer.*
 import kotlinx.android.synthetic.main.bottom_nav_bar_admin.*
 import models.Beers

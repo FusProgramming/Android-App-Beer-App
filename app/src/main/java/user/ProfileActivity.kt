@@ -1,14 +1,12 @@
-package com.example.androidappfinalproject
+package user
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.androidappfinalproject.R
+import com.example.androidappfinalproject.searchActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
-import fragments.*
 import kotlinx.android.synthetic.main.bottom_nav_bar_signedin.*
 
 class ProfileActivity : AppCompatActivity() {
@@ -16,22 +14,20 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
         bottomNavViewBarSignedIn.onNavigationItemSelectedListener= nOnNavigationItemSelectedListener
 
     }
-
-
     private val nOnNavigationItemSelectedListener
             = BottomNavigationView.OnNavigationItemSelectedListener { i->
         when(i.itemId){
-            R.id.navigation_dashboard -> {
-                val intent2 = Intent(this, searchActivity::class.java)
+            R.id.navigation_user_search -> {
+                val intent2 = Intent(this, ProfileSearchActivity::class.java)
                 startActivity(intent2)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_user_profile -> {
-                //replaceFragment(ProfileUserFragment())
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
 
@@ -39,11 +35,5 @@ class ProfileActivity : AppCompatActivity() {
 
         false
 
-    }
-
-    private fun replaceFragment(fragment: Fragment){
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
-        fragmentTransaction.commit()
     }
 }

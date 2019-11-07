@@ -1,6 +1,6 @@
 package com.example.androidappfinalproject
 
-import android.app.PendingIntent.getActivity
+import admin.ProfileAdminActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,12 +14,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.bottom_nav_bar.*
-import models.User
+import user.ProfileActivity
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
