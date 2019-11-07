@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidappfinalproject.LoginActivity
 import com.example.androidappfinalproject.MapActivity
+import com.example.androidappfinalproject.MapDataActivity
 import com.example.androidappfinalproject.R
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -35,7 +36,7 @@ class  AddSearchRecyclerViewAdapter(private val storeList: MutableList<Stores>,
         holder.geoPoint.text = store.geoPoint.toString()
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, MapActivity::class.java)
+            val intent = Intent(context, MapDataActivity::class.java)
             intent.putExtra("storeAddress", holder.storeAddress.text.toString())
             context.startActivity(intent)
 

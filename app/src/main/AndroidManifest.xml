@@ -28,6 +28,7 @@
         <activity android:name=".searchActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MapActivity" />
+        <activity android:name=".MapDataActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
