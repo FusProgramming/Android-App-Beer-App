@@ -18,7 +18,6 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         buttonRegisterAccount.setOnClickListener(this)
-        buttonAdminAccount.setOnClickListener(this)
     }
 
     private fun preformRegister() {

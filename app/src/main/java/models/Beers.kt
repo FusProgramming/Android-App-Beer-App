@@ -3,10 +3,10 @@ package models
 import java.util.HashMap
 
 class Beers {
-    var uid: String? = null
-    var beerCompany: String? = null
-    var beerName: String? = null
-    var beerType: String? = null
+    var uid: String = ""
+    var beerCompany: String = ""
+    var beerName: String = ""
+    var beerType: String = ""
 
     constructor() {}
 
@@ -26,9 +26,9 @@ class Beers {
     fun toMap(): Map<String, Any> {
 
         val result = HashMap<String, Any>()
-        result.put("beerCompany", beerCompany!!)
-        result.put("beerName", beerName!!)
-        result.put("beerType", beerType!!)
+        result.put("beerCompany", beerCompany)
+        result.put("beerName", beerName)
+        result.put("beerType", beerType)
 
         return result
     }

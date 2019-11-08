@@ -15,6 +15,7 @@ class AddBeerRecyclerViewAdapter(private val beerList: MutableList<Beers>,
                                  private val context: Context,
                                  private val db: FirebaseFirestore) :
     RecyclerView.Adapter<AddBeerRecyclerViewAdapter.ViewHolder>() {
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val beer = beerList[position]
         Log.d("FireBase", "1Information Added to FireStore")
@@ -41,4 +42,8 @@ class AddBeerRecyclerViewAdapter(private val beerList: MutableList<Beers>,
         internal var beerType: TextView = view.findViewById(R.id.beer_type_textview)
     }
 
+    fun removeAt(position: Int) {
+        beerList.removeAt(position)
+        notifyItemRemoved(position)
+    }
 }

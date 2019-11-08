@@ -118,6 +118,7 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
                 else -> false
             }
         }
+
 }
 
 
