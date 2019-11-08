@@ -1,7 +1,7 @@
 <resources>
     <string name="google_map_api_key">AIzaSyBRzWIc0-e9Pob8JYMy-gCJ0qzcnkgZq-g</string>
 
-    <string name="app_name">AndroidDevApp</string>
+    <string name="app_name">Find My Drink</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Search</string>
@@ -10,11 +10,8 @@
     <string name="title_add_beer">Add Beer</string>
     <string name="title_add_store">Add Store</string>
     <string name="title_admin_profile">Profile</string>
-
     <string name="title_user_search">Search</string>
-
     <string name="title_user_profile">Profile</string>
-
     <string name="title_user_home">Home</string>
 
 

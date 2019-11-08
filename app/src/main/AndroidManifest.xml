@@ -23,9 +23,21 @@
         <activity android:name="admin.ProfileAdminActivity"></activity>
         <activity android:name="admin.AddStoreActivity" />
         <activity android:name="admin.AddBeerActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".searchActivity" />
+        <activity android:name=".RegisterActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity">
+            </meta-data>
+        </activity>
+        <activity android:name=".LoginActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity">
+            </meta-data>
+        </activity>
+        <activity android:name=".searchActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                        android:value=".MainActivity">
+            </meta-data>
+        </activity>
         <activity android:name="user.ProfileSearchActivity"/>
         <activity android:name="user.ProfileActivity" />
         <activity android:name=".MapActivity" />
