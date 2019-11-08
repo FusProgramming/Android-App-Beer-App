@@ -51,6 +51,7 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
                 addBeerType.visibility = View.GONE
                 buttonAddBeer.visibility = View.GONE
                 addBeerCompany.visibility = View.GONE
+                addBeerPhoto.visibility = View.GONE
                 replaceFragment(AddBeerFragment())
             }
         }
@@ -108,11 +109,6 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
                 R.id.admin_profile -> {
                     val intent2 = Intent(this, ProfileAdminActivity::class.java)
                     startActivity(intent2)
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.admin_add_Store -> {
-                    val intent3 = Intent(this, AddStoreActivity::class.java)
-                    startActivity(intent3)
                     return@OnNavigationItemSelectedListener true
                 }
                 else -> false

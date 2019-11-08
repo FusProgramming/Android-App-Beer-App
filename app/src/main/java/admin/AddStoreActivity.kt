@@ -27,11 +27,6 @@ class AddStoreActivity : AppCompatActivity() {
                     startActivity(intent2)
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.admin_add_Store -> {
-                    val intent3 = Intent(this, AddStoreActivity::class.java)
-                    startActivity(intent3)
-                    return@OnNavigationItemSelectedListener true
-                }
                 else -> false
             }
         }
