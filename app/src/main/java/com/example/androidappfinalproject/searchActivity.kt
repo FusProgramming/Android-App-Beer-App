@@ -3,6 +3,7 @@ package com.example.androidappfinalproject
 import adapter.AddBeerRecyclerViewAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils.isEmpty
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import fragments.SearchBeerFragment
@@ -26,10 +28,17 @@ class searchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         db = FirebaseFirestore.getInstance()
         setContentView(R.layout.activity_search)
-        replaceFragment(SearchBeerFragment())
+        val user = FirebaseAuth.getInstance().currentUser
+        if(isEmpty(user.toString())) {
+            replaceFragment(SearchBeerFragment())
+        } else {
+            replaceFragment(SearchBeerFragment())
 
+        }
         bottomNavViewBar.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.search_bar, menu)

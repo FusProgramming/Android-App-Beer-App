@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         val documentRef = db.collection("users").document(uid)
         documentRef.get()
             .addOnSuccessListener { document ->
-
                 if (document != null) {
                     val value = document.getString("type")
                     if(value == "User") {
