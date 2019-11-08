@@ -38,7 +38,6 @@ class UserSearchRVAdapter(private val storeList: MutableList<Stores>,
             intent.putExtra("storeAddress", holder.storeAddress.text.toString())
             context.startActivity(intent)
         }
-
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         Log.d("FireBase", "2Information Added to FireStore")

@@ -12,7 +12,7 @@ class MapDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val searchAddress = intent.getStringExtra("storeAddress")
-        Toast.makeText(this, "Unsuccessful Login $searchAddress", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Location: $searchAddress", Toast.LENGTH_SHORT).show()
         val searchAddress1 = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=$searchAddress"))
         startActivity(searchAddress1)
     }
