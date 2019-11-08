@@ -43,7 +43,6 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 saveUserToFirebase()
                 Log.d("Register", "Successful Register: ${it.result?.user?.uid}")
                 Toast.makeText(this, "Welcome ${it.result?.user}", Toast.LENGTH_SHORT).show()
-
                 val intentLogin = Intent(this, ProfileActivity::class.java)
                 startActivity(intentLogin)
             }

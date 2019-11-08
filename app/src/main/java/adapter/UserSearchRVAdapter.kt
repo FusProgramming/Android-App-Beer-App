@@ -33,7 +33,6 @@ class UserSearchRVAdapter(private val storeList: MutableList<Stores>,
         holder.storeName.text = store.storeName
         holder.storeAddress.text = store.storeAddress
         holder.beerName.text = store.beerName
-        holder.geoPoint.text = store.geoPoint.toString()
         holder.itemView.setOnClickListener {
             val intent = Intent(context, MapDataActivity::class.java)
             intent.putExtra("storeAddress", holder.storeAddress.text.toString())
@@ -58,7 +57,6 @@ class UserSearchRVAdapter(private val storeList: MutableList<Stores>,
         internal var storeName: TextView = view.findViewById(R.id.store_name_textview)
         internal var storeAddress: TextView = view.findViewById(R.id.store_address_type_textview)
         internal var beerName: TextView = view.findViewById((R.id.store_beer_name_textview))
-        internal var geoPoint: TextView = view.findViewById((R.id.store_geopoint_textview))
 
     }
 }
