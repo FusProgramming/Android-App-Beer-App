@@ -76,9 +76,7 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
         Log.d("FireBase", "DocumentSnapshot added with ID")
 
     }
-
-
-
+    
     private fun saveUserToFirebase(id: String,beerCompany: String, beerName: String, beerType: String) {
         val beer = Beers(id,beerCompany,beerName,beerType).toMap()
         Log.d("FireBase", "DocumentSnapshot added with ID")
