@@ -23,28 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         val permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION)
         ActivityCompat.requestPermissions(this, permissions,0)
-
-        val uid = FirebaseAuth.getInstance().uid ?: ""
-        val db = FirebaseFirestore.getInstance()
-/*
-        val documentRef = db.collection("users").document(uid)
-        documentRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    val value = document.getString("type")
-                    if(value == "User") {
-                        val intentLogin = Intent(this, ProfileActivity::class.java)
-                        startActivity(intentLogin)
-                    } else if(value == "Admin") {
-                        val intentLogin = Intent(this, ProfileAdminActivity::class.java)
-                        startActivity(intentLogin)
-                    } else {
-
-                    }
-                }
-            }
-
- */
+        
         bottomNavViewBar.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
     }
 

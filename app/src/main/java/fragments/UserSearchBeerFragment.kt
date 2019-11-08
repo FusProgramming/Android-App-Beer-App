@@ -29,6 +29,7 @@ class UserSearchBeerFragment : Fragment() {
     ): View? {
         db = FirebaseFirestore.getInstance()
         root = inflater.inflate(R.layout.fragment_store, container, false)
+
         Log.d("Regi", "SearchBeerFragment")
         loadStoreList()
         Log.d("Regi", "SearchBeerFragmentLoaded")

@@ -3,7 +3,6 @@ package com.example.androidappfinalproject
 import adapter.AddBeerRecyclerViewAdapter
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils.isEmpty
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -28,16 +27,19 @@ class searchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         db = FirebaseFirestore.getInstance()
         setContentView(R.layout.activity_search)
-        val user = FirebaseAuth.getInstance().currentUser
-        if(isEmpty(user.toString())) {
-            replaceFragment(SearchBeerFragment())
-        } else {
-            replaceFragment(SearchBeerFragment())
+        verifyUser()
 
-        }
         bottomNavViewBar.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
     }
 
+    private fun verifyUser() {
+        val uid = FirebaseAuth.getInstance().uid
+        if(uid == null) {
+            replaceFragment(SearchBeerFragment())
+        } else {
+            replaceFragment(SearchBeerFragment())
+        }
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
