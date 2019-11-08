@@ -8,26 +8,25 @@
     android:id="@+id/fragmentContainer"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Main Activity"
-        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
         <!-- bottom navigation -->
+
+        <ImageView
+            android:id="@+id/addBeerPhoto"
+            android:layout_width="267dp"
+            android:layout_height="548dp"
+            android:layout_marginStart="76dp"
+            android:foregroundGravity="center_horizontal"
+            app:srcCompat="@drawable/ic_beer_outline" />
+
         <include layout="@layout/bottom_nav_bar" />
 
     </RelativeLayout>
 
 
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

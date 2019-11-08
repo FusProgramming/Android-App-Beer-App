@@ -10,5 +10,11 @@
         android:layout_height="wrap_content"
         android:text="profile fragment" />
 
-
+    <ImageView
+        android:id="@+id/addBeerPhoto"
+        android:layout_width="267dp"
+        android:layout_height="548dp"
+        android:layout_marginStart="76dp"
+        android:foregroundGravity="center_horizontal"
+        app:srcCompat="@drawable/ic_beer_outline" />
 </LinearLayout>
