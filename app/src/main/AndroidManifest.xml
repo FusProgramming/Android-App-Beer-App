@@ -22,7 +22,11 @@
         android:theme="@style/AppTheme">
         <activity android:name="admin.ProfileAdminActivity"></activity>
         <activity android:name="admin.AddStoreActivity" />
-        <activity android:name="admin.AddBeerActivity" />
+        <activity android:name="admin.AddBeerActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="admin.ProfileAdminActivity">
+            </meta-data>
+        </activity>
         <activity android:name=".RegisterActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity">
