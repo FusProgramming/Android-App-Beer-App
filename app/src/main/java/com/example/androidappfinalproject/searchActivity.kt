@@ -27,19 +27,11 @@ class searchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         db = FirebaseFirestore.getInstance()
         setContentView(R.layout.activity_search)
-        verifyUser()
+        replaceFragment(SearchBeerFragment())
 
         bottomNavViewBar.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
     }
 
-    private fun verifyUser() {
-        val uid = FirebaseAuth.getInstance().uid
-        if(uid == null) {
-            replaceFragment(SearchBeerFragment())
-        } else {
-            replaceFragment(SearchBeerFragment())
-        }
-    }
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
