@@ -39,6 +39,7 @@ class UserSearchBeerFragment : Fragment(), SearchView.OnQueryTextListener {
         db = FirebaseFirestore.getInstance()
         root = inflater.inflate(R.layout.fragment_store, container, false)
 
+        editsearch = root!!.findViewById(R.id.searchuser_sv) as SearchView
 
         Log.d("Regi", "SearchBeerFragment")
         loadStoreList()

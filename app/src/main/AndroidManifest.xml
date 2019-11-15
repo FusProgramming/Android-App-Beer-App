@@ -42,7 +42,9 @@
                         android:value=".MainActivity">
             </meta-data>
         </activity>
-        <activity android:name="user.ProfileSearchActivity"/>
+        <activity android:name="user.ProfileSearchActivity"
+            android:theme="@style/generalnotitle">
+        </activity>
         <activity android:name="user.ProfileActivity" />
         <activity android:name=".MapActivity" />
         <activity android:name=".MapDataActivity" />

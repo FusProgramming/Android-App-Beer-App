@@ -19,6 +19,7 @@ class ProfileSearchActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         db = FirebaseFirestore.getInstance()
         setContentView(R.layout.activity_user_search)
         replaceFragment(UserSearchBeerFragment())
