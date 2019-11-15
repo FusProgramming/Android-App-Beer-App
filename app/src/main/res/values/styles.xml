@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ToolbarStyle" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+    <style name="generalnotitle" parent="Theme.AppCompat.Light" >
+        <item name="android:windowNoTitle">true</item>   <!-- //this -->
+    </style>
+
 </resources>

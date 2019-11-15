@@ -21,7 +21,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="admin.ProfileAdminActivity"></activity>
-        <activity android:name="admin.AddStoreActivity" />
         <activity android:name="admin.AddBeerActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value="admin.ProfileAdminActivity">
@@ -37,7 +36,8 @@
                 android:value=".MainActivity">
             </meta-data>
         </activity>
-        <activity android:name=".searchActivity">
+        <activity android:name=".searchActivity"
+            android:theme="@style/generalnotitle">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                         android:value=".MainActivity">
             </meta-data>

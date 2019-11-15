@@ -20,12 +20,22 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
+import kotlin.collections.ArrayList
 
 class  AddSearchRecyclerViewAdapter(private val storeList: MutableList<Stores>,
                                    private val context: Context,
                                    private val db: FirebaseFirestore
 ) :
     RecyclerView.Adapter<AddSearchRecyclerViewAdapter.ViewHolder>() {
+    private val arraylist: ArrayList<Stores>
+
+    init {
+
+        this.arraylist = ArrayList<Stores>()
+        this.arraylist.addAll(storeList)
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val store = storeList[position]
         Log.d("FireBase", "1Information Added to FireStore")
@@ -62,6 +72,23 @@ class  AddSearchRecyclerViewAdapter(private val storeList: MutableList<Stores>,
         internal var storeAddress: TextView = view.findViewById(R.id.store_address_type_textview)
         internal var beerName: TextView = view.findViewById((R.id.store_beer_name_textview))
 
+    }
+
+
+    fun filter(charText: String) {
+        var charText = charText
+        charText = charText.toLowerCase(Locale.getDefault())
+        storeList.clear()
+        if (charText.length == 0) {
+            storeList.addAll(arraylist)
+        } else {
+            for (wp in arraylist) {
+                if (wp.beerName!!.toLowerCase(Locale.getDefault()).contains(charText)) {
+                    storeList.add(wp)
+                }
+            }
+        }
+        notifyDataSetChanged()
     }
 }
 
