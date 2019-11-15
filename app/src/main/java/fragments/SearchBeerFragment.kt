@@ -9,6 +9,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.SearchView
+import android.widget.TextView
+import android.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,14 +23,16 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
+import kotlinx.android.synthetic.main.fragment_store.*
 import models.AddSearchRecyclerViewAdapter
 import models.Stores
 
-class SearchBeerFragment : Fragment() {
+class SearchBeerFragment : Fragment(), SearchView.OnQueryTextListener  {
     private var storeAdapter: AddSearchRecyclerViewAdapter? = null
     private var root: View? = null
     private var db: FirebaseFirestore? = null
     private var firestoreListener: ListenerRegistration? = null
+    lateinit var editsearch: SearchView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +40,9 @@ class SearchBeerFragment : Fragment() {
     ): View? {
         db = FirebaseFirestore.getInstance()
         root = inflater.inflate(R.layout.fragment_store, container, false)
+
+        editsearch = root!!.findViewById(R.id.searchuser_sv) as SearchView
+
         loadStoreList()
         firestoreListener = db!!.collection("stores")
             .addSnapshotListener(EventListener { documentSnapshots, e ->
@@ -50,9 +60,19 @@ class SearchBeerFragment : Fragment() {
                     .findViewById<View>(R.id.store_list) as RecyclerView
                 storeListRV.adapter = storeAdapter
             })
+        editsearch!!.setOnQueryTextListener(this)
+
         return root
     }
 
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String): Boolean {
+        storeAdapter!!.filter(newText)
+        return false
+    }
 
     private fun loadStoreList() {
         db!!.collection("stores").get().addOnCompleteListener { task ->
