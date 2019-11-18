@@ -1,4 +1,4 @@
-package user
+package state
 
 import `interface`.StoreState
 import actions.Actions

@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.bottom_nav_bar_signedin.*
 import models.Store
 import models.StoreType
+import state.AddStore
+import state.StoreList
 import kotlin.properties.Delegates
 
 class ProfileActivity : AppCompatActivity() {
