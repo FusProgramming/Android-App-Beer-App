@@ -14,6 +14,25 @@
     <string name="title_user_profile">Profile</string>
     <string name="title_user_home">Home</string>
 
+    <string name="addSandwich">Add</string>
+
+
+    <string name="inputName">Input Namew</string>
+
+
+    <string name="wrapName"> Wrap</string>
+
+
+    <string name="grinderName">Grinder</string>
+
+
+    <string name="submitName">Submit</string>
+
+
+    <string name="createSandwich">Create Sandwich</string>
+
+
+    <string name="predefinedSandwich">StateMachine2</string>
 
 
 

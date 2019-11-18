@@ -5,7 +5,8 @@ import models.StoreType
 
 sealed class Actions {
     class AddStoreClicked: Actions()
+    class HideStoreClicked: Actions()
     class StoreTypeSelected(val type: StoreType): Actions()
-    class PredefinedSandwichSelected(val store: Store): Actions()
-    class SubmitStoreClicked(val storeName: String): Actions()
+    class PredefinedStoreSelected(val store: MutableList<Store>): Actions()
+    class SubmitStoreClicked(val StoreName: String): Actions()
 }
