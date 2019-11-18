@@ -1,6 +1,7 @@
 package actions
 
 import models.Store
+import models.StoreType
 
 sealed class Actions {
     class AddStoreClicked: Actions()
