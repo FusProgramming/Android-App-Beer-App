@@ -10,12 +10,13 @@
     <string name="title_add_beer">Add Beer</string>
     <string name="title_add_store">Add Store</string>
     <string name="title_admin_profile">Profile</string>
+    <string name="title_admin_store">Profile</string>
     <string name="title_user_search">Search</string>
     <string name="title_user_profile">Profile</string>
     <string name="title_user_home">Home</string>
 
-    <string name="addSandwich">Add</string>
-
+    <string name="addSandwich">Show List</string>
+    <string name="hideSandwich">Hide List</string>
 
     <string name="inputName">Input Namew</string>
 

@@ -109,6 +109,11 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(intent2)
                     return@OnNavigationItemSelectedListener true
                 }
+                R.id.admin_store -> {
+                    val intent2 = Intent(this, AddStoreActivity::class.java)
+                    startActivity(intent2)
+                    return@OnNavigationItemSelectedListener true
+                }
                 else -> false
             }
         }

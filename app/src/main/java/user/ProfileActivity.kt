@@ -23,13 +23,9 @@ import kotlin.properties.Delegates
 
 class ProfileActivity : AppCompatActivity() {
 
-    private val predefinedStores: MutableList<Store> = mutableListOf()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        buildPredefinedStores()
-        showStoreList(emptyList())
         bottomNavViewBarSignedIn.onNavigationItemSelectedListener =
             nOnNavigationItemSelectedListener
 
@@ -70,56 +66,4 @@ class ProfileActivity : AppCompatActivity() {
 
             false
         }
-
-    var currentState by Delegates.observable<StoreState>(
-        StoreList(
-            emptyList()
-        ), { _, old, new ->
-            renderViewState(new, old)
-        })
-
-
-
-    private fun buildPredefinedStores() {
-        predefinedStores.add(Store("GrilledChicken", StoreType.GRINDER))
-
-    }
-
-    private fun renderViewState(newState: StoreState, oldState: StoreState) {
-        when (newState) {
-            is StoreList -> showStoreList(newState.store)
-            is AddStore -> showAddSandwichView(predefinedStores)
-        }
-        when (oldState) {
-            is StoreList -> hideStoreList()
-            is AddStore -> hideAddStoreView()
-        }
-    }
-
-    private fun showStoreList(sandwiches: List<Store>) {
-        storeList.visibility = View.VISIBLE
-        favorite_sandwiches_listview.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, sandwiches)
-        add_sandwich_button.setOnClickListener {
-            currentState = currentState.consumeAction(Actions.AddStoreClicked())
-        }
-    }
-
-
-    private fun showAddSandwichView(predefinedSandwiches: List<Store>) {
-        add_sandwich_container.visibility = View.VISIBLE
-        predefined_sandwiches_listview.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, predefinedSandwiches)
-    }
-
-
-    private fun hideStoreList() {
-        storeList.visibility = View.GONE
-        hide_sandwich_button.setOnClickListener {
-            val selectedStore = predefinedStores
-            currentState = currentState.consumeAction(Actions.PredefinedStoreSelected(selectedStore))
-        }
-    }
-
-    private fun hideAddStoreView() {
-        add_sandwich_container.visibility = View.GONE
-    }
 }

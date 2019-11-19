@@ -8,4 +8,8 @@
         android:id="@+id/admin_profile"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_admin_profile" />
+    <item
+        android:id="@+id/admin_store"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_admin_store" />
 </menu>
