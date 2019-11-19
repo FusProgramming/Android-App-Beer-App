@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.example.androidappfinalproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_admin_add_store.*
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -24,7 +25,7 @@ class AddStoreActivity : AppCompatActivity() {
     private val predefinedStores: MutableList<Store> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.example.androidappfinalproject.R.layout.activity_admin_add_store)
+        setContentView(R.layout.activity_admin_add_store)
         buildPredefinedStores()
         showStoreList(emptyList())
         bottomNavViewBarAdmin.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
@@ -67,7 +68,7 @@ class AddStoreActivity : AppCompatActivity() {
     private fun showAddSandwichView(predefinedSandwiches: List<Store>) {
         add_sandwich_container.visibility = View.VISIBLE
         predefined_sandwiches_listview.adapter =
-            ArrayAdapter(this, R.layout.simple_list_item_1, predefinedSandwiches)
+            ArrayAdapter(this, android.R.layout.simple_list_item_1, predefinedSandwiches)
     }
 
 
@@ -87,17 +88,17 @@ class AddStoreActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                com.example.androidappfinalproject.R.id.admin_add_beer -> {
+                R.id.admin_add_beer -> {
                     val intent = Intent(this, AddBeerActivity::class.java)
                     startActivity(intent)
                     return@OnNavigationItemSelectedListener true
                 }
-                com.example.androidappfinalproject.R.id.admin_profile -> {
+                R.id.admin_profile -> {
                     val intent2 = Intent(this, ProfileAdminActivity::class.java)
                     startActivity(intent2)
                     return@OnNavigationItemSelectedListener true
                 }
-                com.example.androidappfinalproject.R.id.admin_store -> {
+                R.id.admin_store -> {
                     val intent2 = Intent(this, AddStoreActivity::class.java)
                     startActivity(intent2)
                     return@OnNavigationItemSelectedListener true
