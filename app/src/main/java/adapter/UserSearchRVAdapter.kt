@@ -47,7 +47,6 @@ class UserSearchRVAdapter(private val storeList: MutableList<Stores>,
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        Log.d("FireBase", "2Information Added to FireStore")
         val view = LayoutInflater.from(parent!!.context)
             .inflate(R.layout.item_store, parent, false)
         return ViewHolder(view)
@@ -55,7 +54,6 @@ class UserSearchRVAdapter(private val storeList: MutableList<Stores>,
     }
 
     override fun getItemCount(): Int {
-        Log.d("FireBase", "3Information Added to FireStore")
         return storeList.size
     }
 
