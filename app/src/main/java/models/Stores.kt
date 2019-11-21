@@ -8,7 +8,7 @@ class Stores {
     var storeName: String? = null
     var storeAddress: String? = null
     var beerName: String? = null
-    var geoPoint: GeoPoint? = null
+    var geoPoint: String? = null
     var addressLongitude: String? = null
     var addressLatitude: String? = null
 
@@ -20,7 +20,7 @@ class Stores {
         storeName: String,
         storeAddress: String,
         beerName: String,
-        geoPoint: GeoPoint,
+        geoPoint: String,
         longitude: String,
         latitude: String
     ) {

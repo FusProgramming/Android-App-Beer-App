@@ -33,12 +33,9 @@ class ProfileSearchActivity : AppCompatActivity() {
         val searchView = searchItem.actionView as SearchView
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query:String):Boolean {
-                Log.d("Regi", "DocumentSnapshot added with ID")
                 return false
             }
             override fun onQueryTextChange(newText:String):Boolean {
-
-                Log.d("Regi", "DocumentSnapshot added with ID")
                 searchData()
                 return false
 

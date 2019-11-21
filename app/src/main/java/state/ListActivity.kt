@@ -10,8 +10,9 @@ class StoreList(val store: List<Store>):
     override fun consumeAction(action: Actions): StoreState {
         return when(action) {
             is Actions.AddStoreClicked -> AddStore(store)
-            is Actions.SubmitStoreClicked -> { val newSandwich = Store(action.StoreName, StoreType.GRINDER)
-                StoreList(store + newSandwich)
+            is Actions.SubmitStoreClicked -> {
+                val newStore = Store(action.StoreName)
+                StoreList(store + newStore)
             }
             else -> throw IllegalStateException("Invalid action $action passed to state $this")
         }

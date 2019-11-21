@@ -2,7 +2,6 @@ package admin
 
 import `interface`.StoreState
 import actions.Actions
-import android.app.AppComponentFactory
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -11,11 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.androidappfinalproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_admin_add_store.*
-import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.bottom_nav_bar_admin.*
-import kotlinx.android.synthetic.main.bottom_nav_bar_signedin.*
 import models.Store
-import models.StoreType
+import models.Stores
 import state.AddStore
 import state.StoreList
 import kotlin.properties.Delegates
@@ -42,14 +39,13 @@ class AddStoreActivity : AppCompatActivity() {
 
 
     private fun buildPredefinedStores() {
-        predefinedStores.add(Store("West Haven", StoreType.GRINDER))
-
+        predefinedStores.add(Store("West Haven"))
     }
 
     private fun renderViewState(newState: StoreState, oldState: StoreState) {
         when (newState) {
             is StoreList -> showStoreList(newState.store)
-            is AddStore -> showAddSandwichView(predefinedStores)
+            is AddStore -> showAddStoreView(predefinedStores)
         }
         when (oldState) {
             is StoreList -> hideStoreList()
@@ -59,22 +55,22 @@ class AddStoreActivity : AppCompatActivity() {
 
     private fun showStoreList(sandwiches: List<Store>) {
         storeList.visibility = View.VISIBLE
-        add_sandwich_button.setOnClickListener {
+        add_store_button.setOnClickListener {
             currentState = currentState.consumeAction(Actions.AddStoreClicked())
         }
     }
 
 
-    private fun showAddSandwichView(predefinedSandwiches: List<Store>) {
-        add_sandwich_container.visibility = View.VISIBLE
-        predefined_sandwiches_listview.adapter =
-            ArrayAdapter(this, android.R.layout.simple_list_item_1, predefinedSandwiches)
+    private fun showAddStoreView(predefinedStore: List<Store>) {
+        add_store_container.visibility = View.VISIBLE
+        predefined_store_listview.adapter =
+            ArrayAdapter(this, android.R.layout.simple_list_item_1, predefinedStore)
     }
 
 
     private fun hideStoreList() {
         storeList.visibility = View.GONE
-        hide_sandwich_button.setOnClickListener {
+        hide_store_button.setOnClickListener {
             val selectedStore = predefinedStores
             currentState =
                 currentState.consumeAction(Actions.PredefinedStoreSelected(selectedStore))
@@ -82,7 +78,7 @@ class AddStoreActivity : AppCompatActivity() {
     }
 
     private fun hideAddStoreView() {
-        add_sandwich_container.visibility = View.GONE
+        add_store_container.visibility = View.GONE
     }
 
     private val mOnNavigationItemSelectedListener =
