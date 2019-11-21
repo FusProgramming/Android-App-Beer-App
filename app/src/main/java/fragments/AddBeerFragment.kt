@@ -3,6 +3,7 @@ package fragments
 
 import `interface`.ListClick
 import adapter.AddBeerRecyclerViewAdapter
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -27,7 +28,8 @@ import kotlinx.android.synthetic.main.fragment_beer.*
 import kotlinx.android.synthetic.main.fragment_beer.view.*
 import models.Beers
 
-class AddBeerFragment : Fragment(), ListClick {
+class AddBeerFragment : Fragment() {
+
 
     val beerList = mutableListOf<Beers>()
     lateinit var beerAdapter: AddBeerRecyclerViewAdapter
@@ -72,7 +74,6 @@ class AddBeerFragment : Fragment(), ListClick {
                     beer.uid = doc.id
                     beerList.add(beer)
                 }
-
                 beerAdapter = AddBeerRecyclerViewAdapter(beerList, context!!, db!!)
                 val mLayoutManager = LinearLayoutManager(context!!)
                 val beerListRV = root!!.findViewById<View>(R.id.beer_list) as RecyclerView
@@ -82,8 +83,49 @@ class AddBeerFragment : Fragment(), ListClick {
 
                 val swipeHandler = object : SwipeToDeleteCallback(context!!) {
                     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                        
+                        val position = viewHolder.adapterPosition
+                        val deletedModel = beerList!![position]
+                        val uid = deletedModel.uid
+                        db!!.collection("beers").document(uid!!).delete()
+                            .addOnCompleteListener {
+                                Toast.makeText(
+                                    context,
+                                    "Tender has been deleted!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        beerAdapter.removeAt(position)
+                        // showing snack bar with Undo option
+                        val snackbar = Snackbar.make(
+                            view!!,
+                            " removed from Recyclerview!",
+                            Snackbar.LENGTH_LONG
+                        )
+                        snackbar.setAction("UNDO") {
+                            // undo is selected, restore the deleted item
+                            db!!.collection("beers")
+                                .document(uid)
+                                .set(deletedModel)
+                                .addOnSuccessListener {
+                                    Toast.makeText(
+                                        context,
+                                        "Tender has been updated!",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(
+                                        context,
+                                        "Tender could not be updated!",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            beerAdapter!!.restoreAt(deletedModel, position)
 
-                        deleteRow(viewHolder.adapterPosition)
+                        }
+                        snackbar.setActionTextColor(Color.YELLOW)
+                        snackbar.show()
                     }
                 }
                 val itemTouchHelper = ItemTouchHelper(swipeHandler)
@@ -91,14 +133,5 @@ class AddBeerFragment : Fragment(), ListClick {
             }
         }
     }
-
-    override fun deleteRow(position: Int) {
-        val uid = FirebaseAuth.getInstance().uid ?: ""
-        db!!.collection("beers").document(uid).delete()
-            .addOnCompleteListener {
-                beerAdapter.removeAt(position)
-                Toast.makeText(context, "Selection Has Been Deleted", Toast.LENGTH_SHORT).show()
-            }
-    }
-
 }
+

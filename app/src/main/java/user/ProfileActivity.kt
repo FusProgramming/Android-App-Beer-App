@@ -1,25 +1,16 @@
 package user
 
-import `interface`.StoreState
-import actions.Actions
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidappfinalproject.MainActivity
 import com.example.androidappfinalproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.bottom_nav_bar_signedin.*
 import models.Store
-import models.StoreType
-import state.AddStore
-import state.StoreList
-import kotlin.properties.Delegates
 
 class ProfileActivity : AppCompatActivity() {
 

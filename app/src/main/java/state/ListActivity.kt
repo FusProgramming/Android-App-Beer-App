@@ -3,7 +3,6 @@ package state
 import `interface`.StoreState
 import actions.Actions
 import models.Store
-import models.StoreType
 
 class StoreList(val store: List<Store>):
     StoreState {

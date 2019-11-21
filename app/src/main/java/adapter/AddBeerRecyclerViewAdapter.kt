@@ -45,5 +45,11 @@ class AddBeerRecyclerViewAdapter(private val beerList: MutableList<Beers>,
     fun removeAt(position: Int) {
         beerList.removeAt(position)
         notifyItemRemoved(position)
+        notifyItemRangeChanged(position, beerList.size)
     }
+    fun restoreAt(model: Beers, position: Int) {
+        beerList.add(position,model)
+        notifyItemInserted(position)
+    }
+
 }
