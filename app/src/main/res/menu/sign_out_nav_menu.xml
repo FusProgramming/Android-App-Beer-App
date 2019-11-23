@@ -8,6 +8,4 @@
         android:id="@+id/signOutProfileButton"
         android:title="SignOut"
         app:showAsAction="ifRoom"/>
-
-
 </menu>

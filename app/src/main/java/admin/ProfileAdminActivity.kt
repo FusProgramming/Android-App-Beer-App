@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.example.androidappfinalproject.MainActivity
 import com.example.androidappfinalproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_admin_add_store.*
 import kotlinx.android.synthetic.main.bottom_nav_bar_admin.*
 
 class ProfileAdminActivity : AppCompatActivity() {
@@ -21,8 +23,10 @@ class ProfileAdminActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.sign_out_nav_menu, menu)
+
         return super.onCreateOptionsMenu(menu)
     }
+    
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
@@ -32,6 +36,7 @@ class ProfileAdminActivity : AppCompatActivity() {
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
+
         }
         return super.onOptionsItemSelected(item)
     }
