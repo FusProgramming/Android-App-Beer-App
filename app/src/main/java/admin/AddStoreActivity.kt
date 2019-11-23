@@ -23,8 +23,7 @@ class AddStoreActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_add_store)
-        buildPredefinedStores()
-        showStoreList(emptyList())
+        showStoreList()
         bottomNavViewBarAdmin.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
 
     }
@@ -38,14 +37,10 @@ class AddStoreActivity : AppCompatActivity() {
         })
 
 
-    private fun buildPredefinedStores() {
-        predefinedStores.add(Store("West Haven"))
-    }
-
     private fun renderViewState(newState: StoreState, oldState: StoreState) {
         when (newState) {
-            is StoreList -> showStoreList(newState.store)
-            is AddStore -> showAddStoreView(predefinedStores)
+            is StoreList -> showStoreList()
+            is AddStore -> showAddStoreView()
         }
         when (oldState) {
             is StoreList -> hideStoreList()
@@ -53,7 +48,7 @@ class AddStoreActivity : AppCompatActivity() {
         }
     }
 
-    private fun showStoreList(sandwiches: List<Store>) {
+    private fun showStoreList() {
         storeList.visibility = View.VISIBLE
         add_store_button.setOnClickListener {
             currentState = currentState.consumeAction(Actions.AddStoreClicked())
@@ -61,10 +56,8 @@ class AddStoreActivity : AppCompatActivity() {
     }
 
 
-    private fun showAddStoreView(predefinedStore: List<Store>) {
+    private fun showAddStoreView() {
         add_store_container.visibility = View.VISIBLE
-        predefined_store_listview.adapter =
-            ArrayAdapter(this, android.R.layout.simple_list_item_1, predefinedStore)
     }
 
 

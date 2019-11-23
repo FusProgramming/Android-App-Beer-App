@@ -13,44 +13,11 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <ListView
-            android:id="@+id/favorite_store_listview"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            tools:visibility="gone" />
-
         <Button
             android:id="@+id/add_store_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/addSandwich" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/store_inputs_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone"
-        tools:visibility="visible">
-
-        <EditText
-            android:id="@+id/StoreName"
-            android:layout_width="333dp"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/inputName"
-            android:inputType="textPersonName" />
-
-        <Button
-            android:id="@+id/submit_button"
-            android:layout_width="127dp"
-            android:layout_height="wrap_content"
-            android:text="@string/submitName" />
 
     </LinearLayout>
 
@@ -62,13 +29,6 @@
         android:visibility="gone"
         tools:visibility="visible">
 
-        <ListView
-            android:id="@+id/predefined_store_listview"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            tools:visibility="gone" />
-
         <Button
             android:id="@+id/hide_store_button"
             android:layout_width="match_parent"
@@ -76,6 +36,7 @@
             android:text="@string/hideSandwich" />
 
     </LinearLayout>
+
 
     <!-- bottom navigation -->
     <include layout="@layout/bottom_nav_bar_admin" />
