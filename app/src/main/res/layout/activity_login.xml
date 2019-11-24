@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_ui">
-
+    
+    <!-- Login Email Edit Text -->
     <EditText
         android:id="@+id/emailLogin"
         android:layout_width="275dp"
@@ -30,6 +31,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.387" />
 
+    <!-- Login Password Edit Text -->
     <EditText
         android:id="@+id/passwordLogin"
         android:layout_width="276dp"
@@ -53,6 +55,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.531" />
 
+    <!-- Login Button Text -->
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="279dp"
@@ -74,6 +77,7 @@
         android:background="@drawable/rounded_edittext"
         />
 
+    <!-- Login Button Text -->
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="280dp"
@@ -95,6 +99,7 @@
         android:background="@drawable/rounded_edittext"
         />
 
+    <!-- Login Google Sign In Edit Text -->
     <com.google.android.gms.common.SignInButton
         android:id="@+id/googleLoginButton"
         android:layout_width="wrap_content"
@@ -114,6 +119,7 @@
         app:layout_constraintVertical_bias="0.948"
         />
 
+    <!-- Login Image Edit Text -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="133dp"
