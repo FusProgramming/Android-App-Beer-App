@@ -22,7 +22,7 @@ import models.Beers
 class searchActivity : AppCompatActivity() {
 
     private var db: FirebaseFirestore? = null
-
+//--------------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -33,8 +33,7 @@ class searchActivity : AppCompatActivity() {
         bottomNavViewBar.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
     }
 
-
-
+//--------------------------------------------------------------------------------------------------
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.search_bar, menu)
         val searchItem = menu.findItem(R.id.searchBar)
@@ -56,6 +55,7 @@ class searchActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.BeerProfileButton -> {
@@ -65,6 +65,7 @@ class searchActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun searchData() {
         db!!.collection("beers").whereEqualTo("beerName", true)
             .get()
@@ -77,11 +78,15 @@ class searchActivity : AppCompatActivity() {
                 Log.w("beer", "Error getting documents: ", exception)
             }
     }
+
+//--------------------------------------------------------------------------------------------------
     private fun replaceFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
     }
+
+//--------------------------------------------------------------------------------------------------
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -103,10 +108,6 @@ class searchActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
-
-
-
 }
 
 

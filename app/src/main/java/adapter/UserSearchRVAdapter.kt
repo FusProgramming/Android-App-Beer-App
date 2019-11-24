@@ -33,7 +33,7 @@ class UserSearchRVAdapter(private val storeList: MutableList<Stores>,
     init {
         this.arraylist.addAll(storeList)
     }
-
+//--------------------------------------------------------------------------------------------------
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val store = storeList[position]
         Log.d("FireBase", "1Information Added to FireStore")
@@ -46,6 +46,8 @@ class UserSearchRVAdapter(private val storeList: MutableList<Stores>,
             context.startActivity(intent)
         }
     }
+
+//--------------------------------------------------------------------------------------------------
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent!!.context)
             .inflate(R.layout.item_store, parent, false)
@@ -53,10 +55,12 @@ class UserSearchRVAdapter(private val storeList: MutableList<Stores>,
 
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun getItemCount(): Int {
         return storeList.size
     }
 
+//--------------------------------------------------------------------------------------------------
     inner class ViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view) {
         internal var storeName: TextView = view.findViewById(R.id.store_name_textview)
         internal var storeAddress: TextView = view.findViewById(R.id.store_address_type_textview)
@@ -64,6 +68,7 @@ class UserSearchRVAdapter(private val storeList: MutableList<Stores>,
 
     }
 
+//--------------------------------------------------------------------------------------------------
     fun filter(charText: String) {
         var charText = charText
         charText = charText.toLowerCase(Locale.getDefault())

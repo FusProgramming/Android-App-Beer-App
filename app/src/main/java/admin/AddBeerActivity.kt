@@ -21,17 +21,16 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
 
     private var db: FirebaseFirestore? = null
     internal var id: String? = ""
-
+//--------------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_add_beer)
-
         db = FirebaseFirestore.getInstance()
         buttonAddBeer.setOnClickListener(this)
         bottomNavViewBarAdmin.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
-
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun onStart() {
         super.onStart()
         addBeerName.visibility = View.VISIBLE
@@ -39,11 +38,13 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
         buttonAddBeer.visibility = View.VISIBLE
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.beer_nav_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.BeerProfileButton -> {
@@ -58,6 +59,7 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
         return super.onOptionsItemSelected(item)
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun onClick(v: View) {
         val i = v.id
         when (i) {
@@ -66,7 +68,7 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-
+//--------------------------------------------------------------------------------------------------
     private fun addBeer() {
         val beerCompany = addBeerCompany.text.toString()
         val beerName = addBeerName.text.toString()
@@ -76,7 +78,8 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
         Log.d("FireBase", "DocumentSnapshot added with ID")
 
     }
-    
+
+//--------------------------------------------------------------------------------------------------
     private fun saveUserToFirebase(id: String,beerCompany: String, beerName: String, beerType: String) {
         val beer = Beers(id,beerCompany,beerName,beerType).toMap()
         Log.d("FireBase", "DocumentSnapshot added with ID")
@@ -90,12 +93,14 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
             }
 
     }
+//--------------------------------------------------------------------------------------------------
     private fun replaceFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
     }
 
+//--------------------------------------------------------------------------------------------------
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -117,7 +122,6 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
                 else -> false
             }
         }
-
 }
 
 

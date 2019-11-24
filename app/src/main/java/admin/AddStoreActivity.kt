@@ -20,6 +20,8 @@ import kotlin.properties.Delegates
 class AddStoreActivity : AppCompatActivity() {
 
     private val predefinedStores: MutableList<Store> = mutableListOf()
+
+//--------------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_add_store)
@@ -28,7 +30,7 @@ class AddStoreActivity : AppCompatActivity() {
 
     }
 
-
+//--------------------------------------------------------------------------------------------------
     var currentState by Delegates.observable<StoreState>(
         StoreList(
             emptyList()

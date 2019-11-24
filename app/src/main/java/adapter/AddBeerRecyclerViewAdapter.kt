@@ -16,6 +16,7 @@ class AddBeerRecyclerViewAdapter(private val beerList: MutableList<Beers>,
                                  private val db: FirebaseFirestore) :
     RecyclerView.Adapter<AddBeerRecyclerViewAdapter.ViewHolder>() {
 
+//--------------------------------------------------------------------------------------------------
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val beer = beerList[position]
         Log.d("FireBase", "1Information Added to FireStore")
@@ -25,6 +26,7 @@ class AddBeerRecyclerViewAdapter(private val beerList: MutableList<Beers>,
 
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         Log.d("FireBase", "2Information Added to FireStore")
         val view = LayoutInflater.from(parent!!.context)
@@ -32,21 +34,26 @@ class AddBeerRecyclerViewAdapter(private val beerList: MutableList<Beers>,
         return ViewHolder(view)
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun getItemCount(): Int {
         Log.d("FireBase", "3Information Added to FireStore")
         return beerList.size
     }
 
+//--------------------------------------------------------------------------------------------------
     inner class ViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view) {
         internal var beerName: TextView = view.findViewById(R.id.beer_name_textview)
         internal var beerType: TextView = view.findViewById(R.id.beer_type_textview)
     }
 
+//--------------------------------------------------------------------------------------------------
     fun removeAt(position: Int) {
         beerList.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, beerList.size)
     }
+
+//--------------------------------------------------------------------------------------------------
     fun restoreAt(model: Beers, position: Int) {
         beerList.add(position,model)
         notifyItemInserted(position)

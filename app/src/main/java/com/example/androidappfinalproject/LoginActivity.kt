@@ -131,17 +131,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-    private fun signOut() {
-        auth.signOut()
-        googleSignInClient.signOut().addOnCompleteListener(this) {
-        }
-    }
-
-    private fun revokeAccess() {
-        auth.signOut()
-        googleSignInClient.revokeAccess().addOnCompleteListener(this) {
-        }
-    }
 
     override fun onClick(v: View) {
         val i = v.id
