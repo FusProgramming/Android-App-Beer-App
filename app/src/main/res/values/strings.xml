@@ -1,7 +1,17 @@
 <resources>
     <string name="google_map_api_key">AIzaSyBRzWIc0-e9Pob8JYMy-gCJ0qzcnkgZq-g</string>
-
     <string name="app_name">Find My Drink</string>
+
+
+
+    <!-- Login String Information -->
+    <string name="email_login">Email</string>
+    <string name="password_login">Password</string>
+    <string name="register_login">Register</string>
+    <string name="submit_login">Login</string>
+
+
+
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Search</string>
@@ -17,22 +27,11 @@
 
     <string name="addSandwich">Show List</string>
     <string name="hideSandwich">Hide List</string>
-
     <string name="inputName">Input Namew</string>
-
-
     <string name="wrapName"> Wrap</string>
-
-
     <string name="grinderName">Grinder</string>
-
-
     <string name="submitName">Submit</string>
-
-
     <string name="createSandwich">Create Sandwich</string>
-
-
     <string name="predefinedSandwich">StateMachine2</string>
 
 
