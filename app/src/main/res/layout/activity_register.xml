@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/login_ui">
 
-
+    <!-- Register Name Edit Text -->
     <EditText
         android:id="@+id/registerName"
         android:layout_width="275dp"
@@ -30,6 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.961" />
 
+    <!-- Register Password Edit Text -->
     <EditText
         android:id="@+id/registerPassword"
         android:layout_width="275dp"
@@ -52,6 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/registerEmail"
         app:layout_constraintVertical_bias="0.411" />
 
+    <!-- Register Email Edit Text -->
     <EditText
         android:id="@+id/registerEmail"
         android:layout_width="275dp"
@@ -72,6 +74,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Register City Edit Text -->
     <EditText
         android:id="@+id/registerCity"
         android:layout_width="275dp"
@@ -92,6 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Register Button Edit Text -->
     <Button
         android:id="@+id/buttonRegisterAccount"
         android:layout_width="206dp"
@@ -110,6 +114,7 @@
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Register Photo Edit Text -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="133dp"
