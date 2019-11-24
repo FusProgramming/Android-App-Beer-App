@@ -1,8 +1,9 @@
 <resources>
+    <!-- Google String Information -->
     <string name="google_map_api_key">AIzaSyBRzWIc0-e9Pob8JYMy-gCJ0qzcnkgZq-g</string>
+
+    <!-- App Name String Information -->
     <string name="app_name">Find My Drink</string>
-
-
 
     <!-- Login String Information -->
     <string name="email_login">Email</string>
@@ -10,8 +11,15 @@
     <string name="register_login">Register</string>
     <string name="submit_login">Login</string>
 
+    <!-- Register String Information -->
+    <string name="user_register">Username</string>
+    <string name="password_register">Password</string>
+    <string name="email_register">Email</string>
+    <string name="submit_register">Register</string>
+    <string name="city_register">City, State, Zipcode</string>
 
 
+    <!-- Title String Information -->
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Search</string>
