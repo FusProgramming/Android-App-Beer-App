@@ -18,15 +18,71 @@
 
         <ImageView
             android:id="@+id/addBeerPhoto"
-            android:layout_width="267dp"
-            android:layout_height="548dp"
-            android:layout_marginStart="76dp"
+            android:layout_width="143dp"
+            android:layout_height="247dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="288dp"
+            android:layout_marginTop="-56dp"
+            android:layout_marginEnd="-20dp"
+            android:layout_marginBottom="418dp"
             android:foregroundGravity="center_horizontal"
             app:srcCompat="@drawable/ic_beer_outline" />
 
         <include layout="@layout/bottom_nav_bar" />
 
+        <Button
+            android:id="@+id/hide_store_button"
+            android:layout_width="355dp"
+            android:layout_height="63dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="488dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="52dp"
+            android:text="@string/hideSandwich" />
+
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/storeList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/add_store_button"
+            android:layout_width="355dp"
+            android:layout_height="63dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="488dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="52dp"
+            android:text="@string/addSandwich" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/add_store_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
