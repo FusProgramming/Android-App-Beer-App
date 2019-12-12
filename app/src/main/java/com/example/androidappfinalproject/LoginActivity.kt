@@ -70,7 +70,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                                 Toast.makeText(this, "Welcome  ", Toast.LENGTH_SHORT).show()
                                 val intentLogin = Intent(this, ProfileActivity::class.java)
                                 startActivity(intentLogin)
-                            } else if(value == "Admin") {
+                            }
+                            if(value == "Admin") {
                                 Log.d("Login", "Successfully logged in: $value")
                                 Log.d("Login", "Successfully logged in: ${it.result?.user?.uid}")
                                 Toast.makeText(this, "Welcome  ", Toast.LENGTH_SHORT).show()

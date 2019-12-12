@@ -15,17 +15,7 @@
         tools:layout_editor_absoluteX="-152dp"
         tools:layout_editor_absoluteY="-196dp">
         <!-- bottom navigation -->
-        <ImageView
-            android:id="@+id/addBeerPhoto"
-            android:layout_width="267dp"
-            android:layout_height="548dp"
-            android:layout_marginStart="76dp"
-            android:foregroundGravity="center_horizontal"
-            app:srcCompat="@drawable/ic_beer_outline" />
-
         <include layout="@layout/bottom_nav_bar_signedin" />
-
-
     </RelativeLayout>
 
 

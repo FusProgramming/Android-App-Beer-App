@@ -23,7 +23,6 @@ class ProfileActivity : AppCompatActivity() {
             nOnNavigationItemSelectedListener
 
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.sign_out_nav_menu, menu)
         return super.onCreateOptionsMenu(menu)

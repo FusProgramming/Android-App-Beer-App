@@ -20,12 +20,10 @@ import state.StoreList
 import kotlin.properties.Delegates
 
 class ProfileAdminActivity : AppCompatActivity() {
-    private val predefinedStores: MutableList<Store> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_profile)
-        showStoreList()
         bottomNavViewBarAdmin.onNavigationItemSelectedListener= mOnNavigationItemSelectedListener
     }
 
@@ -49,53 +47,6 @@ class ProfileAdminActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-
-
-    //--------------------------------------------------------------------------------------------------
-    var currentState by Delegates.observable<StoreState>(
-        StoreList(
-            emptyList()
-        ), { _, old, new ->
-            renderViewState(new, old)
-        })
-
-
-    private fun renderViewState(newState: StoreState, oldState: StoreState) {
-        when (newState) {
-            is StoreList -> showStoreList()
-            is AddStore -> showAddStoreView()
-        }
-        when (oldState) {
-            is StoreList -> hideStoreList()
-            is AddStore -> hideAddStoreView()
-        }
-    }
-
-    private fun showStoreList() {
-        storeList.visibility = View.VISIBLE
-        add_store_button.setOnClickListener {
-            currentState = currentState.consumeAction(Actions.AddStoreClicked())
-        }
-    }
-
-
-    private fun showAddStoreView() {
-        add_store_container.visibility = View.VISIBLE
-    }
-
-
-    private fun hideStoreList() {
-        storeList.visibility = View.GONE
-        hide_store_button.setOnClickListener {
-            val selectedStore = predefinedStores
-            currentState =
-                currentState.consumeAction(Actions.PredefinedStoreSelected(selectedStore))
-        }
-    }
-
-    private fun hideAddStoreView() {
-        add_store_container.visibility = View.GONE
-    }
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { i ->
             when (i.itemId) {
