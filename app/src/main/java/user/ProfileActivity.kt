@@ -71,6 +71,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun showStoreList() {
         storeList.visibility = View.VISIBLE
+
         add_store_button.setOnClickListener {
             currentState = currentState.consumeAction(Actions.AddStoreClicked())
         }
@@ -79,8 +80,19 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun showAddStoreView() {
         add_store_container.visibility = View.VISIBLE
+        textViewUpdate.visibility = View.VISIBLE
+        textViewWelcome.visibility = View.GONE
+        textViewUpdateText.visibility = View.VISIBLE
+        textViewWelcomeText.visibility = View.GONE
     }
 
+    private fun hideAddStoreView() {
+        add_store_container.visibility = View.GONE
+        textViewWelcome.visibility = View.VISIBLE
+        textViewUpdate.visibility = View.GONE
+        textViewUpdateText.visibility = View.GONE
+        textViewWelcomeText.visibility = View.VISIBLE
+    }
 
     private fun hideStoreList() {
         storeList.visibility = View.GONE
@@ -91,9 +103,7 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun hideAddStoreView() {
-        add_store_container.visibility = View.GONE
-    }
+
     private val nOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { i ->
             when (i.itemId) {
