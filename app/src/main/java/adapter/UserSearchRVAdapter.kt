@@ -36,7 +36,9 @@ class UserSearchRVAdapter(private val storeList: MutableList<Stores>,
 //--------------------------------------------------------------------------------------------------
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val store = storeList[position]
-        Log.d("FireBase", "1Information Added to FireStore")
+        Log.d("FireBase", "Information Added to FireStore")
+    //This info is to help search for the information in MapData to connect it to Google Maps.
+    //It will transmit the store address to google maps
         holder.storeName.text = store.storeName
         holder.storeAddress.text = store.storeAddress
         holder.beerName.text = store.beerName
@@ -69,6 +71,7 @@ class UserSearchRVAdapter(private val storeList: MutableList<Stores>,
     }
 
 //--------------------------------------------------------------------------------------------------
+    //This will filter the text for beerName so that the user can specifically look for beer names
     fun filter(charText: String) {
         var charText = charText
         charText = charText.toLowerCase(Locale.getDefault())
