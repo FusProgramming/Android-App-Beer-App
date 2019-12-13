@@ -1,31 +1,31 @@
 package com.example.androidappfinalproject
 
-
-
 import org.junit.Test
 import models.Beers
 import org.junit.Assert.*
 
-
+//--------------------------------------------------------------------------------------------------
 class BeerListTest {
     val beers = Beers(
         "SomeUID",
-        "Beer1",
-        "BeerName1",
-        "BeerType1"
+        "Two Roads",
+        "Two Evil",
+        "IPA"
     )
     val beers2 = Beers(
         "SomeUID2",
-        "Beer2",
-        "BeerName2",
-        "BeerType2"
+        "HOAX BREWING",
+        "Seany Palmer",
+        "Double IPA"
     )
     val beers3 = Beers(
         "SomeUID3",
-        "Beer3",
-        "BeerName3",
-        "BeerType3"
+        "New England Brewing Company",
+        "Fuzzy Baby Ducks",
+        "IPA"
     )
+
+//--------------------------------------------------------------------------------------------------
     @Test
     fun beerList() {
         val beerList: MutableList<Beers> = mutableListOf(

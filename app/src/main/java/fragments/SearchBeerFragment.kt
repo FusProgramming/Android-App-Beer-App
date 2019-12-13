@@ -45,6 +45,7 @@ class SearchBeerFragment : Fragment(), SearchView.OnQueryTextListener  {
         editsearch = root!!.findViewById(R.id.searchuser_sv) as SearchView
 
         loadStoreList()
+    //sets up listener for firestore database
         firestoreListener = db!!.collection("stores")
             .addSnapshotListener(EventListener { documentSnapshots, e ->
                 if (e != null) {
@@ -73,12 +74,14 @@ class SearchBeerFragment : Fragment(), SearchView.OnQueryTextListener  {
 
 //--------------------------------------------------------------------------------------------------
     override fun onQueryTextChange(newText: String): Boolean {
+    //Filter text for store adapter
         storeAdapter!!.filter(newText)
         return false
     }
 
 //--------------------------------------------------------------------------------------------------
     private fun loadStoreList() {
+    //Loads store list from firestore db
         db!!.collection("stores").get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val storeList = mutableListOf<Stores>()

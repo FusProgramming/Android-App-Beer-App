@@ -17,16 +17,17 @@ import kotlinx.android.synthetic.main.bottom_nav_bar_signedin.*
 class ProfileSearchActivity : AppCompatActivity() {
     private var db: FirebaseFirestore? = null
 
+//--------------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         db = FirebaseFirestore.getInstance()
         setContentView(R.layout.activity_user_search)
         replaceFragment(UserSearchBeerFragment())
-
         bottomNavViewBarSignedIn.onNavigationItemSelectedListener = nOnNavigationItemSelectedListener
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.search_bar, menu)
         val searchItem = menu.findItem(R.id.searchBar)
@@ -38,13 +39,12 @@ class ProfileSearchActivity : AppCompatActivity() {
             override fun onQueryTextChange(newText:String):Boolean {
                 searchData()
                 return false
-
             }
         })
-
         return super.onCreateOptionsMenu(menu)
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun searchData() {
         db!!.collection("beers").whereEqualTo("beerName", true)
             .get()
@@ -58,6 +58,7 @@ class ProfileSearchActivity : AppCompatActivity() {
             }
     }
 
+//--------------------------------------------------------------------------------------------------
     private val nOnNavigationItemSelectedListener
             = BottomNavigationView.OnNavigationItemSelectedListener { i->
         when(i.itemId){

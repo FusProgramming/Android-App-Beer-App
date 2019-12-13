@@ -42,16 +42,16 @@ class UserSearchBeerFragment : Fragment(), SearchView.OnQueryTextListener {
 
         editsearch = root!!.findViewById(R.id.searchuser_sv) as SearchView
 
-        Log.d("Regi", "SearchBeerFragment")
+        Log.d("Beer", "SearchBeerFragment")
         loadStoreList()
-        Log.d("Regi", "SearchBeerFragmentLoaded")
+        Log.d("Beer", "SearchBeerFragmentLoaded")
 
         firestoreListener = db!!.collection("stores")
             .addSnapshotListener(EventListener { documentSnapshots, e ->
                 if (e != null) {
                     return@EventListener
                 }
-                Log.d("Regi", "SearchBeerFragment")
+                Log.d("Beer", "SearchBeerFragment")
 
                 val storeList = mutableListOf<Stores>()
                 for (doc in documentSnapshots!!) {
@@ -64,7 +64,7 @@ class UserSearchBeerFragment : Fragment(), SearchView.OnQueryTextListener {
                     .findViewById<View>(R.id.store_list) as RecyclerView
                 storeListRV.adapter = storeAdapter
             })
-        Log.d("Regi", "SearchBeerFragment?")
+        Log.d("Beer", "SearchBeerFragment?")
 
         editsearch!!.setOnQueryTextListener(this)
         return root
@@ -83,7 +83,8 @@ class UserSearchBeerFragment : Fragment(), SearchView.OnQueryTextListener {
 
 //--------------------------------------------------------------------------------------------------
     private fun loadStoreList() {
-        db!!.collection("stores").get().addOnCompleteListener { task ->
+    //Loads store list from firestore db
+    db!!.collection("stores").get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val storeList = mutableListOf<Stores>()
                 for (doc in task.result!!) {

@@ -52,7 +52,6 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 Log.d("Register", "Failed to create User ${it.message}")
                 Toast.makeText(this, "Unsuccessful Login", Toast.LENGTH_SHORT).show()
             }
-
     }
 
 //--------------------------------------------------------------------------------------------------
@@ -74,8 +73,8 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             .addOnFailureListener { e ->
                 Log.w("Regi", "Error adding document", e)
             }
-
     }
+
 //--------------------------------------------------------------------------------------------------
     override fun onClick(v: View) {
         val i = v.id

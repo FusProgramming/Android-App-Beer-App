@@ -23,19 +23,22 @@ class ProfileActivity : AppCompatActivity() {
 
     private val predefinedStores: MutableList<Store> = mutableListOf()
 
+//--------------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         showStoreList()
         bottomNavViewBarSignedIn.onNavigationItemSelectedListener =
             nOnNavigationItemSelectedListener
-
     }
+
+//--------------------------------------------------------------------------------------------------
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.sign_out_nav_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.signOutProfileButton -> {
@@ -49,7 +52,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
 
-    //--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
     var currentState by Delegates.observable<StoreState>(
         StoreList(
             emptyList()
@@ -57,7 +60,7 @@ class ProfileActivity : AppCompatActivity() {
             renderViewState(new, old)
         })
 
-
+//--------------------------------------------------------------------------------------------------
     private fun renderViewState(newState: StoreState, oldState: StoreState) {
         when (newState) {
             is StoreList -> showStoreList()
@@ -69,6 +72,7 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun showStoreList() {
         storeList.visibility = View.VISIBLE
 
@@ -77,7 +81,7 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-
+//--------------------------------------------------------------------------------------------------
     private fun showAddStoreView() {
         add_store_container.visibility = View.VISIBLE
         textViewUpdate.visibility = View.VISIBLE
@@ -86,6 +90,7 @@ class ProfileActivity : AppCompatActivity() {
         textViewWelcomeText.visibility = View.GONE
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun hideAddStoreView() {
         add_store_container.visibility = View.GONE
         textViewWelcome.visibility = View.VISIBLE
@@ -94,6 +99,7 @@ class ProfileActivity : AppCompatActivity() {
         textViewWelcomeText.visibility = View.VISIBLE
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun hideStoreList() {
         storeList.visibility = View.GONE
         hide_store_button.setOnClickListener {
@@ -103,7 +109,7 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-
+//--------------------------------------------------------------------------------------------------
     private val nOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { i ->
             when (i.itemId) {
