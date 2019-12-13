@@ -32,6 +32,7 @@ class UserSearchBeerFragment : Fragment(), SearchView.OnQueryTextListener {
     lateinit var editsearch: SearchView
     private var searchIcon: ImageView? = null
 
+//--------------------------------------------------------------------------------------------------
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -69,17 +70,18 @@ class UserSearchBeerFragment : Fragment(), SearchView.OnQueryTextListener {
         return root
     }
 
-
+//--------------------------------------------------------------------------------------------------
     override fun onQueryTextSubmit(query: String?): Boolean {
         return false
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun onQueryTextChange(newText: String): Boolean {
         storeAdapter!!.filter(newText)
         return false
     }
 
-
+//--------------------------------------------------------------------------------------------------
     private fun loadStoreList() {
         db!!.collection("stores").get().addOnCompleteListener { task ->
             if (task.isSuccessful) {

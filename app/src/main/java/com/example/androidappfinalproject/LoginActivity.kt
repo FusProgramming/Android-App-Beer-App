@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
+//--------------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -44,7 +45,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         private const val TAG = "GoogleActivity"
         private const val RC_SIGN_IN = 9001
     }
-
+//--------------------------------------------------------------------------------------------------
     private fun performLogin() {
         val email = emailLogin.text.toString()
         val password = passwordLogin.text.toString()
@@ -85,11 +86,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     }
             }
     }
+
+//--------------------------------------------------------------------------------------------------
     private fun preformRegister() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
@@ -103,6 +107,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id!!)
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
@@ -124,13 +129,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
     }
-
+//--------------------------------------------------------------------------------------------------
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-
+//--------------------------------------------------------------------------------------------------
     override fun onClick(v: View) {
         val i = v.id
         when (i) {

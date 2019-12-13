@@ -59,5 +59,20 @@
         allows your consumers to find your drinks with ease.
     </string>
     <string name="textViewProfileUpdate">
+        Several updates to the app include bug fixes to prevent Crashes.
+        Google Directions is working properly with the app, and text is added to all of the home
+        Pages for each type of user. Unit Tests were created to help with optimization with the app.
+        UI updates were also added.
+        If there are any suggestions you wish to leave to improve this app, please let us know. at
+        FindMyBeer@gmail.com
+    </string>
+    <string name="textViewAdmin">
+        Welcome to the power user page. You are an employee of a company who has access to this page.
+        To get started the Add Beer section allows you as a user to add your companies selection to
+        the app. This will be updated in real time so that the selection will be visible to all users.
+        You also have the option to delete products if you choose to not have it at certain locations.
+
+        If there are any suggestions you wish to leave to improve this app, please let us know. at
+        FindMyBeer@gmail.com
     </string>
 </resources>

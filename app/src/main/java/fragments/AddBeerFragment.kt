@@ -30,7 +30,7 @@ import models.Beers
 
 class AddBeerFragment : Fragment() {
 
-
+//--------------------------------------------------------------------------------------------------
     val beerList = mutableListOf<Beers>()
     lateinit var beerAdapter: AddBeerRecyclerViewAdapter
     private var root: View? = null
@@ -65,6 +65,7 @@ class AddBeerFragment : Fragment() {
         return root
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun loadBeerList() {
         db!!.collection("beers").get().addOnCompleteListener { task ->
             if (task.isSuccessful) {

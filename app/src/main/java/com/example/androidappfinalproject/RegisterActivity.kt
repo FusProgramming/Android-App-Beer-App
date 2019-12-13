@@ -14,12 +14,14 @@ import user.ProfileActivity
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
+//--------------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         buttonRegisterAccount.setOnClickListener(this)
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun preformRegister() {
         val name = registerName.text.toString()
         val password = registerPassword.text.toString()
@@ -53,6 +55,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun saveUserToFirebase() {
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val db = FirebaseFirestore.getInstance()
@@ -73,7 +76,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             }
 
     }
-
+//--------------------------------------------------------------------------------------------------
     override fun onClick(v: View) {
         val i = v.id
         when (i) {

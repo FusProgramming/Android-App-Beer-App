@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MapDataActivity : AppCompatActivity() {
 
+//--------------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val searchAddress = intent.getStringExtra("storeAddress")

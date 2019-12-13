@@ -8,6 +8,69 @@
     android:id="@+id/fragmentContainer"
     tools:context="admin.ProfileAdminActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/addBeerPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="93dp"
+                android:foregroundGravity="center_horizontal"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/beer_branding_header" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Welcome"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="40dp" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary" />
+            <TextView
+                android:id="@+id/textViewAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textViewAdmin"
+                android:textSize="18dp" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary" />
+
+            <ImageView
+                android:id="@+id/addBeerPhoto2"
+                android:layout_width="143dp"
+                android:layout_height="247dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="138dp"
+                android:layout_marginEnd="129dp"
+                android:layout_marginBottom="62dp"
+                android:foregroundGravity="center_horizontal"
+                app:srcCompat="@drawable/ic_beer_outline" />
+        </LinearLayout>
+    </ScrollView>
+
     <RelativeLayout
         android:id="@+id/relativeLayoutAdmin"
         android:layout_width="match_parent"
@@ -16,11 +79,6 @@
         tools:layout_editor_absoluteY="-196dp">
         <!-- bottom navigation -->
 
-        <Button
-            android:id="@+id/hide_store_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hideSandwich" />
         <include layout="@layout/bottom_nav_bar_admin" />
 
 

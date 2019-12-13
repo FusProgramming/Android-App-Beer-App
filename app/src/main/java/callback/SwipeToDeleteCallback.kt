@@ -17,7 +17,7 @@ abstract class SwipeToDeleteCallback(context: Context) :
     private val backgroundColor = Color.parseColor("#354396")
     private val clearPaint = Paint().apply { xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR) }
 
-
+//--------------------------------------------------------------------------------------------------
     override fun getMovementFlags(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder
@@ -26,7 +26,7 @@ abstract class SwipeToDeleteCallback(context: Context) :
         return super.getMovementFlags(recyclerView, viewHolder)
     }
 
-
+//--------------------------------------------------------------------------------------------------
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
@@ -35,6 +35,7 @@ abstract class SwipeToDeleteCallback(context: Context) :
         return false
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun onChildDraw(
         c: Canvas,
         recyclerView: RecyclerView,
@@ -84,6 +85,7 @@ abstract class SwipeToDeleteCallback(context: Context) :
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun clearCanvas(c: Canvas?, left: Float, top: Float, right: Float, bottom: Float) {
         c?.drawRect(left, top, right, bottom, clearPaint)
     }
