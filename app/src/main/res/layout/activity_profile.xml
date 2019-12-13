@@ -8,53 +8,50 @@
     android:id="@+id/fragmentContainer"
     tools:context="user.ProfileActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/beer_header_pic" />
+
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:text="Welcome"
+            android:textAlignment="center"
+            android:textSize="40dp" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/beer_header_pic" />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="40dp"
-                android:textAlignment="center"
-                android:text="Welcome" />
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textViewProfile"
+            android:textSize="16dp" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:text="@string/textViewProfile" />
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimary"/>
-        </LinearLayout>
-    </ScrollView>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary" />
+    </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/relativeLayoutUser"
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-152dp"
-        tools:layout_editor_absoluteY="-196dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
         <!-- bottom navigation -->
 
         <include layout="@layout/bottom_nav_bar_signedin" />
@@ -71,12 +68,14 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="52dp"
             android:text="@string/hideSandwich" />
+
+
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/storeList"
-        android:layout_width="599dp"
-        android:layout_height="823dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -85,6 +84,7 @@
             android:layout_width="355dp"
             android:layout_height="63dp"
             android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="24dp"
@@ -93,7 +93,7 @@
             android:layout_marginBottom="52dp"
             android:text="@string/addSandwich" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/add_store_container"

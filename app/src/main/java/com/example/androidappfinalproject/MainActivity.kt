@@ -6,7 +6,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -29,8 +31,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION)
         ActivityCompat.requestPermissions(this, permissions,0)
-        
+        val button = findViewById<Button>(R.id.RegisterButtonMain)
         bottomNavViewBar.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
+        button.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private val mOnNavigationItemSelectedListener =
