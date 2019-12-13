@@ -58,5 +58,6 @@
         Breweries and distributors. Create an account and spread your product through the app which
         allows your consumers to find your drinks with ease.
     </string>
-
+    <string name="textViewProfileUpdate">
+    </string>
 </resources>
