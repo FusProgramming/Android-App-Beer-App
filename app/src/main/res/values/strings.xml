@@ -33,14 +33,9 @@
     <string name="title_user_profile">Profile</string>
     <string name="title_user_home">Home</string>
 
-    <string name="addSandwich">Show List</string>
-    <string name="hideSandwich">Hide List</string>
-    <string name="inputName">Input Namew</string>
-    <string name="wrapName"> Wrap</string>
-    <string name="grinderName">Grinder</string>
-    <string name="submitName">Submit</string>
-    <string name="createSandwich">Create Sandwich</string>
-    <string name="predefinedSandwich">StateMachine2</string>
+    <string name="addList">Updates</string>
+    <string name="hideList">Welcome</string>
+
 
     <string name="textViewProfile">
         This section of the app allows for you the user to search for each selection of beer of
