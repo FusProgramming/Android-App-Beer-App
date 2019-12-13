@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 //--------------------------------------------------------------------------------------------------
+    //Bottom Nav Bar
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { i ->
             when (i.itemId) {

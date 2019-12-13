@@ -46,9 +46,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private var latitude = 0.0
     private var longitude = 0.0
-
     private lateinit var mGoogleMap: GoogleMap
 
+//--------------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_map)
@@ -56,20 +56,21 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         Toast.makeText(this, "Unsuccessful Login $searchAddress", Toast.LENGTH_SHORT).show()
         val searchAddress1 = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=$searchAddress"))
         startActivity(searchAddress1)
-
+    //Builds code to send map to fragment
         val mapFragment =
             supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
+//--------------------------------------------------------------------------------------------------
     override fun onStart() {
         super.onStart()
         startLocationUpdates()
     }
 
-
+//--------------------------------------------------------------------------------------------------
+    //Sets up google maps to appear.
     override fun onMapReady(googleMap: GoogleMap) {
-
         mGoogleMap = googleMap
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(
@@ -92,7 +93,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         )
     }
 
-
+//--------------------------------------------------------------------------------------------------
+    //Google Location Services
     protected fun startLocationUpdates() {
         // initialize location request object
         mLocationRequest = LocationRequest.create()
@@ -101,17 +103,15 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             interval = UPDATE_INTERVAL
             setFastestInterval(FASTEST_INTERVAL)
         }
-
         val builder = LocationSettingsRequest.Builder()
         builder.addLocationRequest(mLocationRequest!!)
         val locationSettingsRequest = builder.build()
-
         val settingsClient = LocationServices.getSettingsClient(this)
         settingsClient!!.checkLocationSettings(locationSettingsRequest)
-
         registerLocationListner()
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun registerLocationListner() {
         // initialize location callback object
         val locationCallback = object : LocationCallback() {
@@ -125,7 +125,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    //
+//--------------------------------------------------------------------------------------------------
     private fun onLocationChanged(location: Location) {
         // create message for toast with updated latitude and longitudefa
         var msg = "Updated Location: " + location.latitude + " , " + location.longitude
@@ -134,12 +134,12 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
         val location = LatLng(location.latitude, location.longitude)
         mGoogleMap.clear()
-
         mGoogleMap.addMarker(MarkerOptions().position(location).title("Current Location"))
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(location))
         mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(11f))
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun checkPermission(): Boolean {
         if (ContextCompat.checkSelfPermission(
                 this,
@@ -153,6 +153,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+//--------------------------------------------------------------------------------------------------
     private fun requestPermissions() {
         ActivityCompat.requestPermissions(
             this,
@@ -160,7 +161,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             1
         )
     }
-
+    
+//--------------------------------------------------------------------------------------------------
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -173,6 +175,4 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
-
-
 }
