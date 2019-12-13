@@ -20,9 +20,8 @@ class AddBeerRecyclerViewAdapter(private val beerList: MutableList<Beers>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val beer = beerList[position]
         Log.d("FireBase", "1Information Added to FireStore")
-
-        holder.beerName.text = beer.beerName
-        holder.beerType.text = beer.beerType
+        holder.beerName.text = beer.beerName // Holder to push beerName to Recycler VIew
+        holder.beerType.text = beer.beerType //Holder to push beerType to Recycler View
 
     }
 
@@ -41,6 +40,7 @@ class AddBeerRecyclerViewAdapter(private val beerList: MutableList<Beers>,
     }
 
 //--------------------------------------------------------------------------------------------------
+    //ViewHolder inside adapter. Finds the view Holder so that text can be output
     inner class ViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view) {
         internal var beerName: TextView = view.findViewById(R.id.beer_name_textview)
         internal var beerType: TextView = view.findViewById(R.id.beer_type_textview)

@@ -111,7 +111,7 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
             }
 
     }
-    
+
 //--------------------------------------------------------------------------------------------------
     //Fragement replacer. Allows for fragments to replace activity.
     private fun replaceFragment(fragment: Fragment){
