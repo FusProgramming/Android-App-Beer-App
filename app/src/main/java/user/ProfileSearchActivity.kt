@@ -45,6 +45,7 @@ class ProfileSearchActivity : AppCompatActivity() {
     }
 
 //--------------------------------------------------------------------------------------------------
+    //Searches Data in firestore db
     private fun searchData() {
         db!!.collection("beers").whereEqualTo("beerName", true)
             .get()
@@ -59,6 +60,7 @@ class ProfileSearchActivity : AppCompatActivity() {
     }
 
 //--------------------------------------------------------------------------------------------------
+    //Bottom Navigation Bar Code
     private val nOnNavigationItemSelectedListener
             = BottomNavigationView.OnNavigationItemSelectedListener { i->
         when(i.itemId){
@@ -72,12 +74,11 @@ class ProfileSearchActivity : AppCompatActivity() {
                 startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
-
         }
-
         false
-
     }
+
+//--------------------------------------------------------------------------------------------------
     private fun replaceFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
