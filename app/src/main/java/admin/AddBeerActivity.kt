@@ -1,6 +1,5 @@
 package admin
 
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.androidappfinalproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -25,7 +25,7 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_add_beer)
-        db = FirebaseFirestore.getInstance()
+        db = FirebaseFirestore.getInstance() //FireStore instance
         buttonAddBeer.setOnClickListener(this)
         bottomNavViewBarAdmin.onNavigationItemSelectedListener = mOnNavigationItemSelectedListener
     }
@@ -73,6 +73,23 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
         val beerCompany = addBeerCompany.text.toString()
         val beerName = addBeerName.text.toString()
         val typeBeer = addBeerType.text.toString()
+
+        if(beerCompany.isEmpty() || beerName.isEmpty() || typeBeer.isEmpty()) {
+            Toast.makeText(this, "Please Fill Information", Toast.LENGTH_SHORT).show()
+            Log.d("Beer", "Beer Items Empty")
+            if(beerCompany.isEmpty()) { //Toast for beer Company
+                Toast.makeText(this, "Beer Company Empty", Toast.LENGTH_SHORT).show()
+                Log.d("Beer", "Company Name Empty")
+            }
+            if(beerName.isEmpty()) { // Toast for beer Name
+                Toast.makeText(this, "Beer Name Empty", Toast.LENGTH_SHORT).show()
+                Log.d("Beer", "Beer Name Empty")
+            }
+            if(typeBeer.isEmpty()) { //Toast for beer Company
+                Toast.makeText(this, "Beer Type Empty", Toast.LENGTH_SHORT).show()
+                Log.d("Beer", "Beer Type Empty")
+            }
+        }
         Log.d("FireBase", "DocumentSnapshot added with ID")
         saveUserToFirebase(id.toString(),beerCompany, beerName,typeBeer)
         Log.d("FireBase", "DocumentSnapshot added with ID")
@@ -80,10 +97,11 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 //--------------------------------------------------------------------------------------------------
+    //Saves users to firebase database
     private fun saveUserToFirebase(id: String,beerCompany: String, beerName: String, beerType: String) {
         val beer = Beers(id,beerCompany,beerName,beerType).toMap()
         Log.d("FireBase", "DocumentSnapshot added with ID")
-        db!!.collection("beers")
+        db!!.collection("beers") //Adds to collection in firebase
             .add(beer)
             .addOnSuccessListener { documentReference ->
                 Log.d("FireBase", "DocumentSnapshot written with ID: " + documentReference.id)
@@ -93,7 +111,9 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
             }
 
     }
+    
 //--------------------------------------------------------------------------------------------------
+    //Fragement replacer. Allows for fragments to replace activity.
     private fun replaceFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
@@ -101,15 +121,16 @@ class AddBeerActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 //--------------------------------------------------------------------------------------------------
+    //Bottom Navigation Bar Code
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.admin_add_beer -> {
+                R.id.admin_add_beer -> { //Send to Activity
                     val intent = Intent(this, AddBeerActivity::class.java)
                     startActivity(intent)
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.admin_profile -> {
+                R.id.admin_profile -> { //Send to Activity
                     val intent2 = Intent(this, ProfileAdminActivity::class.java)
                     startActivity(intent2)
                     return@OnNavigationItemSelectedListener true

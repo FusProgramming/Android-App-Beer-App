@@ -92,7 +92,7 @@ class AddBeerFragment : Fragment() {
                             .addOnCompleteListener {
                                 Toast.makeText(
                                     context,
-                                    "Tender has been deleted!",
+                                    "Beer has been deleted!",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
@@ -100,7 +100,7 @@ class AddBeerFragment : Fragment() {
                         // showing snack bar with Undo option
                         val snackbar = Snackbar.make(
                             view!!,
-                            " removed from Recyclerview!",
+                            " Beer removed from Recyclerview!",
                             Snackbar.LENGTH_LONG
                         )
                         snackbar.setAction("UNDO") {
@@ -111,14 +111,14 @@ class AddBeerFragment : Fragment() {
                                 .addOnSuccessListener {
                                     Toast.makeText(
                                         context,
-                                        "Tender has been updated!",
+                                        "Beer has been updated!",
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
                                 .addOnFailureListener { e ->
                                     Toast.makeText(
                                         context,
-                                        "Tender could not be updated!",
+                                        "Beer could not be updated!",
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }

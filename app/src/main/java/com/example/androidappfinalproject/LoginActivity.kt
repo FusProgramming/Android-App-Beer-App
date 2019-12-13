@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         val email = emailLogin.text.toString()
         val password = passwordLogin.text.toString()
         if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Please Fill", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please Fill Information", Toast.LENGTH_SHORT).show()
         }
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
@@ -67,7 +67,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             if (value == "User") {
                                 Log.d("Login", "Successfully logged in: $value")
                                 Log.d("Login", "Successfully logged in: ${it.result?.user?.uid}")
-                                Toast.makeText(this, "Welcome  ", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "Welcome ${it.result?.user?.uid}", Toast.LENGTH_SHORT).show()
                                 val intentLogin = Intent(this, ProfileActivity::class.java)
                                 startActivity(intentLogin)
                             }
