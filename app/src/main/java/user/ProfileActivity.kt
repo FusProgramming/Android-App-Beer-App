@@ -1,16 +1,23 @@
 package user
 
+import `interface`.StoreState
+import actions.Actions
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidappfinalproject.MainActivity
 import com.example.androidappfinalproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.bottom_nav_bar_signedin.*
 import models.Store
+import state.AddStore
+import state.StoreList
+import kotlin.properties.Delegates
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -19,6 +26,7 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        showStoreList()
         bottomNavViewBarSignedIn.onNavigationItemSelectedListener =
             nOnNavigationItemSelectedListener
 
@@ -40,6 +48,52 @@ class ProfileActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
+    //--------------------------------------------------------------------------------------------------
+    var currentState by Delegates.observable<StoreState>(
+        StoreList(
+            emptyList()
+        ), { _, old, new ->
+            renderViewState(new, old)
+        })
+
+
+    private fun renderViewState(newState: StoreState, oldState: StoreState) {
+        when (newState) {
+            is StoreList -> showStoreList()
+            is AddStore -> showAddStoreView()
+        }
+        when (oldState) {
+            is StoreList -> hideStoreList()
+            is AddStore -> hideAddStoreView()
+        }
+    }
+
+    private fun showStoreList() {
+        storeList.visibility = View.VISIBLE
+        add_store_button.setOnClickListener {
+            currentState = currentState.consumeAction(Actions.AddStoreClicked())
+        }
+    }
+
+
+    private fun showAddStoreView() {
+        add_store_container.visibility = View.VISIBLE
+    }
+
+
+    private fun hideStoreList() {
+        storeList.visibility = View.GONE
+        hide_store_button.setOnClickListener {
+            val selectedStore = predefinedStores
+            currentState =
+                currentState.consumeAction(Actions.PredefinedStoreSelected(selectedStore))
+        }
+    }
+
+    private fun hideAddStoreView() {
+        add_store_container.visibility = View.GONE
+    }
     private val nOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { i ->
             when (i.itemId) {

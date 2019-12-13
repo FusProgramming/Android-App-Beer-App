@@ -42,6 +42,21 @@
     <string name="createSandwich">Create Sandwich</string>
     <string name="predefinedSandwich">StateMachine2</string>
 
-
+    <string name="textViewProfile">
+        This section of the app allows for you the user to search for each selection of beer of
+        your choosing. When you search for a beer selection it will offer the store where the beverages
+        are located and you as a user can choose which one is closest to you. It will send you to google maps
+        and give you the option to use google directions to guide you to the location.
+    </string>
+    <string name="textViewMain">
+        This app is built for users to be able to find their beverage
+        of choice. A user can create an account or use this app without an account. With the
+        continuation of development with this app, more incentives will be designed for users with
+        an account.
+    </string>
+    <string name="textViewMain2">
+        Breweries and distributors. Create an account and spread your product through the app which
+        allows your consumers to find your drinks with ease.
+    </string>
 
 </resources>

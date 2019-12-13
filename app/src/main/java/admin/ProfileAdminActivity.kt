@@ -12,7 +12,6 @@ import com.example.androidappfinalproject.MainActivity
 import com.example.androidappfinalproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_admin_add_store.*
 import kotlinx.android.synthetic.main.bottom_nav_bar_admin.*
 import models.Store
 import state.AddStore
@@ -57,11 +56,6 @@ class ProfileAdminActivity : AppCompatActivity() {
                 }
                 R.id.admin_profile -> {
                     val intent2 = Intent(this, ProfileAdminActivity::class.java)
-                    startActivity(intent2)
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.admin_store -> {
-                    val intent2 = Intent(this, AddStoreActivity::class.java)
                     startActivity(intent2)
                     return@OnNavigationItemSelectedListener true
                 }

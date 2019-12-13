@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fragmentContainer"
-        tools:context="admin.ProfileAdminActivity">
-
+        android:orientation="vertical"
+        tools:context="admin.ProfileAdminActivity"
+        >
         <EditText
             android:id="@+id/addBeerCompany"
             android:layout_width="280dp"
@@ -17,7 +18,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="66dp"
             android:layout_marginEnd="65dp"
-            android:layout_marginBottom="120dp"
+            android:layout_marginBottom="390dp"
             android:textAlignment="center"
             android:background="@drawable/rounded_edittext"
             android:foregroundGravity="center_horizontal"
@@ -27,8 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.479"
-            android:hint="Company Name" />
-
+            android:hint="Company Name"/>
     <EditText
         android:id="@+id/addBeerType"
         android:layout_width="280dp"
@@ -38,7 +38,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="66dp"
         android:layout_marginEnd="65dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="250dp"
         android:background="@drawable/rounded_edittext"
         android:foregroundGravity="center_horizontal"
         android:textAlignment="center"
@@ -52,24 +52,23 @@
 
     <Button
         android:id="@+id/buttonAddBeer"
-        android:layout_width="280dp"
-        android:layout_height="62dp"
+        android:layout_width="279dp"
+        android:layout_height="61dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="66dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="120dp"
-        android:background="@drawable/rounded_edittext"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="180dp"
         android:foregroundGravity="center_horizontal"
-        android:textAlignment="center"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.98" />
+        app:layout_constraintVertical_bias="0.673"
+        android:background="@drawable/rounded_edittext" />
 
     <EditText
         android:id="@+id/addBeerName"
@@ -78,9 +77,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="66dp"
+        android:layout_marginStart="65dp"
         android:layout_marginEnd="65dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="320dp"
         android:background="@drawable/rounded_edittext"
         android:foregroundGravity="center_horizontal"
         android:textAlignment="center"
@@ -93,31 +92,36 @@
         app:layout_constraintVertical_bias="0.641"
         />
 
+    <!-- Login Image Edit Text -->
     <ImageView
         android:id="@+id/addBeerPhoto"
         android:layout_width="133dp"
         android:layout_height="202dp"
-        android:layout_marginStart="76dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="139dp"
+        android:layout_marginEnd="139dp"
+        android:layout_marginBottom="463dp"
+        android:foregroundGravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.242"
+        app:layout_constraintHorizontal_bias="0.311"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_beer_outline"
-        android:foregroundGravity="center_horizontal"/>
+        app:srcCompat="@drawable/ic_beer_outline" />
 
     <RelativeLayout
-            android:id="@+id/relativeLayoutAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="664dp"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="-16dp">
-            <!-- bottom navigation -->
-            <include layout="@layout/bottom_nav_bar_admin" />
+        android:id="@+id/relativeLayoutAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="664dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-16dp">
+        <!-- bottom navigation -->
+        <include layout="@layout/bottom_nav_bar_admin" />
 
-        </RelativeLayout>
+    </RelativeLayout>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
